@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { ProductCard } from "@/components/product/ProductCard";
 import { BundleCard } from "@/components/product/BundleCard";
-import { Marquee } from "@/components/ui/Marquee";
+import { ProofBar } from "@/components/home/ProofBar";
 import { Stars } from "@/components/ui/Stars";
 import { Truck, Recycle, Heart, Leaf } from "@/components/ui/icons";
 import { products } from "@/lib/products";
@@ -75,7 +75,7 @@ export default function ShopPage() {
       </section>
 
       <div className="mt-8">
-        <Marquee />
+        <ProofBar />
       </div>
     </>
   );

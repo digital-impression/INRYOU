@@ -1,87 +1,66 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
-import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight, Pin, Search } from "@/components/ui/icons";
+import { ArrowRight, Pin } from "@/components/ui/icons";
 import { retailerCount, cityCount } from "@/lib/retailers";
 
 // A few headline cities as quick entry points
 const cities = ["Antwerpen", "Gent", "Brussel", "Leuven", "Brugge", "Hasselt"];
 
+/**
+ * Deliberately a low-key band rather than a rounded feature card: this is
+ * useful information on the way to the checkout, not a second closing CTA
+ * competing with the real one below the reviews.
+ */
 export function WhereToBuy() {
   return (
-    <section className="container-px mx-auto max-w-7xl py-20 lg:py-28">
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-blush px-6 py-14 ring-1 ring-charcoal/5 sm:px-12 lg:px-16 lg:py-20">
-        {/* decorative pin dots */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1.5px 1.5px, rgba(56,22,26,0.9) 1.5px, transparent 0)",
-            backgroundSize: "26px 26px",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-16 -top-20 h-[360px] w-[360px] rounded-full opacity-40 blur-[10px]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(224,124,58,0.4), transparent 65%)",
-          }}
-        />
+    <section className="border-y border-charcoal/10 bg-cream-deep">
+      <div className="container-px mx-auto max-w-7xl py-14 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+          <div>
+            <Reveal>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-medium tracking-wide text-charcoal ring-1 ring-charcoal/10">
+                <Pin className="h-4 w-4 text-orange-deep" />
+                {retailerCount}+ verkooppunten · {cityCount} steden
+              </span>
+            </Reveal>
+            <Reveal delay={1}>
+              <h2 className="mt-4 text-balance display-3">
+                Ook gewoon{" "}
+                <span className="accent text-orange-deep">om de hoek.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={2}>
+              <p className="measure mt-3 text-pretty text-ink">
+                Vind INRYOU in de winkel of horecazaak bij jou in de buurt — of
+                laat het gewoon thuisbezorgen.
+              </p>
+            </Reveal>
+          </div>
 
-        <div className="relative mx-auto max-w-2xl text-center">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-medium tracking-wide text-charcoal ring-1 ring-charcoal/10">
-              <Pin className="h-4 w-4 text-orange-deep" />
-              {retailerCount}+ verkooppunten · {cityCount} steden
-            </span>
-          </Reveal>
-          <Reveal delay={1}>
-            <h2 className="mt-5 text-balance display-2">
-              Vind INRYOU ook{" "}
-              <span className="accent text-orange-deep">bij jou</span> in de buurt.
-            </h2>
-          </Reveal>
-          <Reveal delay={2}>
-            <p className="mx-auto mt-4 max-w-md text-pretty text-lg text-ink">
-              In de winkel of horecazaak om de hoek — of gewoon thuisbezorgd.
-            </p>
-          </Reveal>
-
-          {/* City quick-picks */}
-          <Reveal delay={3}>
-            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
-              {cities.map((c) => (
-                <Link
-                  key={c}
-                  href="/waar-te-koop"
-                  className="rounded-full bg-white px-4 py-2 text-sm font-medium text-charcoal shadow-[0_4px_14px_-8px_rgba(56,22,26,0.4)] ring-1 ring-charcoal/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange hover:text-white hover:shadow-[0_12px_22px_-10px_rgba(224,124,58,0.7)] hover:ring-orange"
-                >
-                  {c}
-                </Link>
-              ))}
+          <div className="lg:justify-self-end">
+            <Reveal delay={2}>
+              <div className="flex flex-wrap gap-2.5">
+                {cities.map((c) => (
+                  <Link
+                    key={c}
+                    href="/waar-te-koop"
+                    className="rounded-full bg-white px-4 py-2 text-sm font-medium text-charcoal ring-1 ring-charcoal/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange hover:text-white hover:ring-orange"
+                  >
+                    {c}
+                  </Link>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={3}>
               <Link
                 href="/waar-te-koop"
-                className="rounded-full px-4 py-2 text-sm font-medium text-muted underline-offset-2 hover:text-charcoal hover:underline"
+                className="link-underline mt-6 inline-flex items-center gap-2 text-sm font-medium text-charcoal"
               >
-                + meer
+                Bekijk alle verkooppunten
+                <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
-          </Reveal>
-
-          <Reveal delay={4}>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <ButtonLink href="/waar-te-koop" size="lg">
-                <Search className="h-5 w-5" />
-                Zoek een verkooppunt
-              </ButtonLink>
-              <ButtonLink href="/shop" variant="outline" size="lg">
-                Of bestel online
-                <ArrowRight className="h-5 w-5" />
-              </ButtonLink>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

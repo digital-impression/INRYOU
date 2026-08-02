@@ -36,17 +36,15 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-cream/85 backdrop-blur-md shadow-[0_1px_0_0_rgba(32,29,26,0.06)]"
-          : "bg-transparent"
+      className={`sticky top-0 z-50 bg-charcoal transition-shadow duration-500 ${
+        scrolled ? "shadow-[0_10px_30px_-18px_rgba(38,13,16,0.9)]" : ""
       }`}
     >
       <div className="container-px mx-auto flex h-[68px] max-w-7xl items-center justify-between">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setMenuOpen(true)}
-            className="-ml-1 flex h-9 w-9 items-center justify-center rounded-full text-charcoal transition hover:bg-charcoal/5 lg:hidden"
+            className="-ml-1 flex h-9 w-9 items-center justify-center rounded-full text-cream transition hover:bg-cream/10 lg:hidden"
             aria-label="Menu openen"
           >
             <span className="flex flex-col gap-[5px]">
@@ -55,7 +53,7 @@ export function Header() {
               <span className="block h-[1.5px] w-3.5 bg-current" />
             </span>
           </button>
-          <Logo />
+          <Logo tone="light" />
         </div>
 
         <nav className="hidden items-center gap-9 lg:flex">
@@ -65,8 +63,8 @@ export function Header() {
               href={item.href}
               className={`link-underline text-sm font-medium tracking-wide transition-colors ${
                 pathname.startsWith(item.href)
-                  ? "text-charcoal"
-                  : "text-ink hover:text-charcoal"
+                  ? "text-cream"
+                  : "text-cream/65 hover:text-cream"
               }`}
             >
               {item.label}
@@ -84,7 +82,7 @@ export function Header() {
           <button
             onClick={openCart}
             aria-label={`Open winkelmandje, ${count} artikelen`}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-charcoal transition hover:bg-charcoal/5"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-cream transition hover:bg-cream/10"
           >
             <CartIcon className="h-5 w-5" />
             <AnimatePresence>
@@ -113,21 +111,21 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-charcoal/30 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-charcoal/50 backdrop-blur-sm lg:hidden"
             />
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.45 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-sm flex-col bg-cream px-7 py-6 lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-sm flex-col bg-charcoal px-7 py-6 lg:hidden"
             >
               <div className="flex items-center justify-between">
-                <Logo />
+                <Logo tone="light" />
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label="Menu sluiten"
-                  className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-charcoal/5"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-cream hover:bg-cream/10"
                 >
                   <Close className="h-5 w-5" />
                 </button>
@@ -142,7 +140,7 @@ export function Header() {
                   >
                     <Link
                       href={item.href}
-                      className="block border-b border-charcoal/10 py-4 font-display text-2xl text-charcoal"
+                      className="block border-b border-cream/12 py-4 font-display text-2xl text-cream"
                     >
                       {item.label}
                     </Link>

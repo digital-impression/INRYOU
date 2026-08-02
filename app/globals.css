@@ -213,12 +213,10 @@
     transform: translateX(-50%);
   }
 }
-.animate-marquee {
-  animation: marquee 36s linear infinite;
-}
-/* Slower, calmer ticker for the announcement bar */
+/* Slow, calm ticker — the announcement bar is the only moving strip on the
+   site, so it stays well below reading speed. */
 .animate-marquee-slow {
-  animation: marquee 60s linear infinite;
+  animation: marquee 105s linear infinite;
 }
 
 /* Signature orb — very slow ambient rotation & breathing for decorative use */
@@ -248,7 +246,6 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-float-slow,
   .animate-float-slower,
-  .animate-marquee,
   .animate-marquee-slow,
   .animate-orb-spin,
   .animate-orb-breathe {

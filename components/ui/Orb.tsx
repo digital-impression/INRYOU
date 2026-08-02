@@ -1,39 +1,9 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 
 type Tone = "sunset" | "cream" | "sage";
 
-/** Icon container that echoes the orb — a soft radial gradient, never a flat fill. */
-const iconTones: Record<string, string> = {
-  orange:
-    "radial-gradient(circle at 34% 28%, #f2b878 0%, #e07c3a 55%, #c6612a 100%)",
-  cranberry:
-    "radial-gradient(circle at 34% 28%, #d17280 0%, #b23a4b 55%, #93303e 100%)",
-  sage: "radial-gradient(circle at 34% 28%, #bccbb2 0%, #9aae93 55%, #76896f 100%)",
-  oxblood:
-    "radial-gradient(circle at 34% 28%, #6e3237 0%, #45201f 55%, #38161a 100%)",
-  cream:
-    "radial-gradient(circle at 34% 28%, #ffffff 0%, #f4ead9 55%, #e7dbc6 100%)",
-};
-
-export function IconOrb({
-  tone = "orange",
-  className = "",
-  children,
-}: {
-  tone?: keyof typeof iconTones | string;
-  className?: string;
-  children: ReactNode;
-}) {
-  const text = tone === "cream" ? "text-charcoal" : "text-white";
-  return (
-    <span
-      className={`flex shrink-0 items-center justify-center rounded-full shadow-[0_10px_22px_-10px_rgba(56,22,26,0.5)] ${text} ${className}`}
-      style={{ backgroundImage: iconTones[tone] ?? iconTones.orange }}
-    >
-      {children}
-    </span>
-  );
-}
+// Feature-list icons live in `IconBadge` — hairline rings rather than filled
+// discs, which sit better against this icon set's thin strokes.
 
 const tones: Record<Tone, { a: string; b: string; c: string }> = {
   // warm rising-sun — the signature INRYOU gradient

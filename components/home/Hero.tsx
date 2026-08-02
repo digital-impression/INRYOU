@@ -6,8 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
 import { Stars } from "@/components/ui/Stars";
 import { ArrowRight } from "@/components/ui/icons";
-import { Orb } from "@/components/ui/Orb";
 import { asset } from "@/lib/asset";
+
+/**
+ * Drop a photograph at `public/images/hero-backdrop.jpg` and set this to
+ * "/images/hero-backdrop.jpg" to use it as the panel behind the can.
+ * While it is null the panel falls back to the crafted gradient below.
+ */
+const HERO_BACKDROP: string | null = null;
 
 const fade = {
   hidden: { opacity: 0, y: 28 },
@@ -23,21 +29,67 @@ const flavors = [
     name: "Cranberry",
     note: "Lichtzuur & verfrissend",
     img: "/images/can-cranberry.png",
-    accent: "#b23a4b",
   },
   {
     name: "Ginger & Citrus",
     note: "Pittig & levendig",
     img: "/images/can-ginger-citrus.png",
-    accent: "#e07c3a",
   },
 ];
+
+/**
+ * What the can stands on. A studio sweep — warm paper curving from a lit wall
+ * into a shadowed floor — not a graphic sun; the old radial burst behind the
+ * product was doing the work a photograph should do.
+ */
+function Backdrop() {
+  if (HERO_BACKDROP) {
+    return (
+      <Image
+        src={asset(HERO_BACKDROP)}
+        alt=""
+        fill
+        priority
+        sizes="(min-width:1024px) 460px, 90vw"
+        className="object-cover"
+      />
+    );
+  }
+
+  return (
+    <>
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, #faf2e9 0%, #f6e8dc 44%, #f1dcc9 66%, #e8cdb4 100%)",
+        }}
+      />
+      {/* Light pooling on the floor of the sweep */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 62% 34% at 50% 84%, rgba(255,255,255,0.55), transparent 72%)",
+        }}
+      />
+      {/* Falloff into the corners keeps the panel from reading as flat paper */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 90% 80% at 50% 40%, transparent 45%, rgba(120,72,50,0.10) 100%)",
+        }}
+      />
+    </>
+  );
+}
 
 export function Hero() {
   const [i, setI] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setI((n) => (n + 1) % flavors.length), 3200);
+    const t = setInterval(() => setI((n) => (n + 1) % flavors.length), 4200);
     return () => clearInterval(t);
   }, []);
 
@@ -45,20 +97,12 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Warm rising-sun backdrop, echoing the logo */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-cream via-cream to-cream-deep" />
-        <div
-          className="absolute left-1/2 top-[42%] h-[680px] w-[680px] -translate-x-1/2 rounded-full opacity-70 blur-[20px]"
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(224,124,58,0.30) 0%, rgba(178,58,75,0.14) 38%, rgba(251,247,239,0) 68%)",
-          }}
-        />
-        <div className="absolute inset-0 grain opacity-60" />
+        <div className="absolute inset-0 grain opacity-50" />
       </div>
 
-      <div className="container-px mx-auto grid max-w-7xl items-center gap-12 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-24 lg:pt-20">
+      <div className="container-px mx-auto grid max-w-7xl items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:pb-24 lg:pt-20">
         {/* Copy */}
         <div className="relative z-10 max-w-xl">
           <motion.div
@@ -134,42 +178,49 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Single can that cycles flavour */}
-        <div className="relative z-10 flex h-[440px] items-center justify-center sm:h-[540px] lg:h-[620px]">
-          {/* Signature orb — bold, ambient, bleeding off-canvas behind the can */}
-          <Orb
-            tone="sunset"
-            rays
-            spin
-            breathe
-            opacity={0.9}
-            className="bottom-[2%] left-1/2 h-[440px] w-[440px] -translate-x-1/2 sm:h-[560px] sm:w-[560px] lg:left-[64%] lg:h-[720px] lg:w-[720px]"
-          />
+        {/* Product panel — the can breaks out over the frame's bottom edge */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="relative z-10 mx-auto w-full max-w-[420px] lg:max-w-[460px]"
+        >
+          <div className="relative h-[400px] overflow-hidden rounded-[2.5rem] shadow-[0_50px_80px_-56px_rgba(56,22,26,0.55)] ring-1 ring-charcoal/[0.07] sm:h-[520px] lg:h-[580px]">
+            <Backdrop />
+            <div className="absolute inset-0 grain opacity-40" />
 
-          <div className="animate-float-slow relative flex h-full w-[260px] items-end justify-center lg:w-[300px]">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={flavor.name}
-                initial={{ opacity: 0, y: 30, rotate: -3, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -30, rotate: 3, scale: 0.96 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
-              >
-                <Image
-                  src={asset(flavor.img)}
-                  alt={`INRYOU ${flavor.name} bruisende drank`}
-                  width={300}
-                  height={640}
-                  priority
-                  className="h-[380px] w-auto object-contain drop-shadow-[0_44px_50px_rgba(60,23,27,0.42)] sm:h-[460px] lg:h-[540px]"
-                />
-              </motion.div>
-            </AnimatePresence>
+            {/* Contact shadow — the can reads as standing, not pasted on */}
+            <div
+              aria-hidden
+              className="absolute bottom-[42px] left-1/2 h-6 w-[52%] -translate-x-1/2 rounded-[50%] bg-charcoal/25 blur-xl sm:bottom-[48px] sm:h-8"
+            />
+
+            <div className="absolute inset-x-0 bottom-[46px] flex justify-center sm:bottom-[52px]">
+              <div className="animate-float-slower">
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={flavor.name}
+                    initial={{ opacity: 0, y: 26, rotate: -2.5, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -26, rotate: 2.5, scale: 0.97 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Image
+                      src={asset(flavor.img)}
+                      alt={`INRYOU ${flavor.name} bruisende drank`}
+                      width={300}
+                      height={640}
+                      priority
+                      className="h-[280px] w-auto object-contain drop-shadow-[0_26px_30px_rgba(60,23,27,0.28)] sm:h-[370px] lg:h-[420px]"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
 
-          {/* Floating flavour chip, synced to the can */}
-          <div className="absolute bottom-6 right-0 z-20 hidden rounded-2xl bg-white px-5 py-4 shadow-[0_20px_40px_-20px_rgba(60,23,27,0.55)] ring-1 ring-charcoal/10 md:block lg:-right-2">
+          {/* Flavour card, synced to the can */}
+          <div className="absolute -top-4 right-0 z-20 hidden rounded-2xl bg-white px-5 py-4 shadow-[0_20px_40px_-20px_rgba(60,23,27,0.55)] ring-1 ring-charcoal/10 md:block lg:-right-6">
             <p className="text-xs uppercase tracking-[0.16em] text-muted">
               Nu proeven
             </p>
@@ -189,8 +240,7 @@ export function Hero() {
             </AnimatePresence>
           </div>
 
-          {/* Flavour dots */}
-          <div className="absolute bottom-[-6px] left-1/2 flex -translate-x-1/2 gap-2 lg:left-[38%]">
+          <div className="mt-7 flex justify-center gap-2">
             {flavors.map((f, idx) => (
               <button
                 key={f.name}
@@ -202,7 +252,7 @@ export function Hero() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

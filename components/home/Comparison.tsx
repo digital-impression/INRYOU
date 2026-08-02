@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
-import { IconOrb } from "@/components/ui/Orb";
+import { IconBadge } from "@/components/ui/IconBadge";
 import { Check, Close, ArrowRight } from "@/components/ui/icons";
 
 const rows = [
@@ -60,62 +60,104 @@ export function Comparison() {
             </Reveal>
           </div>
 
-          {/* Decision card — INRYOU visibly wins */}
+          {/* Decision table — INRYOU visibly wins */}
           <Reveal delay={1} as="div">
             <div className="overflow-hidden rounded-[1.75rem] bg-white shadow-[0_40px_70px_-45px_rgba(56,22,26,0.5)] ring-1 ring-charcoal/10">
-              {/* Column headers */}
-              <div className="grid grid-cols-[1.2fr_1fr_1fr]">
-                <div className="px-5 py-5 sm:px-7" />
-                <div className="relative border-l border-charcoal/10 bg-gradient-to-b from-orange-soft/70 to-orange-soft/20 px-3 py-5 text-center sm:px-5">
-                  <span className="absolute -top-0 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange px-3 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-white sm:block">
-                    Onze keuze
-                  </span>
-                  <span className="font-sans text-sm font-bold tracking-[0.06em] text-charcoal">
-                    INRYOU
-                  </span>
-                </div>
-                <div className="border-l border-charcoal/10 px-3 py-5 text-center text-sm font-medium text-muted sm:px-5">
-                  Frisdrank
-                </div>
-              </div>
+              {/*
+                A real table, and one grid rather than one grid per row: with
+                per-row `fr` columns every row sized itself independently, so
+                the column edges stepped in and out down the card. `table-fixed`
+                plus a colgroup locks them. The colgroup also carries the INRYOU
+                tint, which keeps the winning column one continuous block
+                instead of a stack of separately-shaded cells.
+              */}
+              <table className="w-full table-fixed border-collapse text-left">
+                <caption className="sr-only">
+                  INRYOU vergeleken met klassieke frisdrank
+                </caption>
+                <colgroup>
+                  <col className="w-[34%] sm:w-[38%]" />
+                  <col className="w-[36%] bg-orange-soft/40 sm:w-[32%]" />
+                  <col className="w-[30%]" />
+                </colgroup>
 
-              {rows.map((row, idx) => (
-                <div
-                  key={row.label}
-                  className={`group/row grid grid-cols-[1.2fr_1fr_1fr] items-stretch border-t border-charcoal/10 transition-colors ${
-                    idx % 2 ? "bg-cream-deep/50" : "bg-white"
-                  }`}
-                >
-                  <div className="flex items-center px-5 py-4 text-sm font-medium text-charcoal transition-colors group-hover/row:text-cranberry sm:px-7">
-                    {row.label}
-                  </div>
-                  <div className="flex items-center gap-2.5 border-l border-charcoal/10 bg-gradient-to-b from-orange-soft/60 to-orange-soft/20 px-3 py-4 transition-colors group-hover/row:from-orange-soft/90 group-hover/row:to-orange-soft/40 sm:px-5">
-                    <IconOrb tone="sage" className="h-5 w-5">
-                      <Check className="h-3 w-3" strokeWidth={2.4} />
-                    </IconOrb>
-                    <span className="text-sm font-bold text-charcoal">
-                      {row.inryou}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 border-l border-charcoal/10 px-3 py-4 sm:px-5">
-                    <Close className="h-3.5 w-3.5 shrink-0 text-cranberry/50" />
-                    <span className="text-sm text-muted">{row.soda}</span>
-                  </div>
-                </div>
-              ))}
+                <thead>
+                  <tr>
+                    <th className="px-3.5 py-4 sm:px-7">
+                      <span className="sr-only">Kenmerk</span>
+                    </th>
+                    <th
+                      scope="col"
+                      className="border-l border-t-[3px] border-l-charcoal/10 border-t-orange bg-orange-soft/60 px-2.5 py-4 text-center align-bottom sm:px-5"
+                    >
+                      <span className="inline-flex rounded-full bg-orange px-2.5 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-white">
+                        Onze keuze
+                      </span>
+                      <span className="mt-2 block font-sans text-sm font-bold tracking-[0.06em] text-charcoal">
+                        INRYOU
+                      </span>
+                    </th>
+                    <th
+                      scope="col"
+                      className="border-l border-charcoal/10 px-2.5 py-4 text-center align-bottom text-sm font-medium text-muted sm:px-5"
+                    >
+                      Frisdrank
+                    </th>
+                  </tr>
+                </thead>
 
-              {/* Verdict */}
-              <div className="grid grid-cols-[1.2fr_1fr_1fr] border-t border-charcoal/10 bg-charcoal text-cream">
-                <div className="px-5 py-4 text-sm font-medium sm:px-7">
-                  De slimmere keuze
-                </div>
-                <div className="flex items-center justify-center border-l border-cream/10 bg-orange px-3 py-4 text-center text-sm font-bold text-white sm:px-5">
-                  INRYOU
-                </div>
-                <div className="flex items-center justify-center border-l border-cream/10 px-3 py-4 text-center text-sm text-cream/40 sm:px-5">
-                  —
-                </div>
-              </div>
+                <tbody>
+                  {rows.map((row) => (
+                    <tr key={row.label} className="border-t border-charcoal/10">
+                      <th
+                        scope="row"
+                        className="px-3.5 py-4 text-[0.8rem] font-medium text-charcoal sm:px-7 sm:text-sm"
+                      >
+                        {row.label}
+                      </th>
+                      <td className="border-l border-charcoal/10 px-2.5 py-4 sm:px-5">
+                        <span className="flex items-center gap-2.5">
+                          <IconBadge tone="sage" className="h-5 w-5">
+                            <Check className="h-3 w-3" strokeWidth={2.4} />
+                          </IconBadge>
+                          <span className="hyphens-auto break-words text-[0.8rem] font-semibold text-charcoal sm:text-sm">
+                            {row.inryou}
+                          </span>
+                        </span>
+                      </td>
+                      <td className="border-l border-charcoal/10 px-2.5 py-4 sm:px-5">
+                        <span className="flex items-center gap-2">
+                          <Close
+                            className="h-3.5 w-3.5 shrink-0 text-muted/45"
+                            strokeWidth={2}
+                          />
+                          <span className="hyphens-auto break-words text-[0.8rem] text-muted sm:text-sm">
+                            {row.soda}
+                          </span>
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+
+                <tfoot>
+                  <tr className="bg-charcoal text-cream">
+                    <th
+                      scope="row"
+                      className="px-3.5 py-4 text-[0.8rem] font-medium sm:px-7 sm:text-sm"
+                    >
+                      De slimmere keuze
+                    </th>
+                    <td className="bg-orange px-2.5 py-4 text-center text-[0.8rem] font-bold text-white sm:px-5 sm:text-sm">
+                      INRYOU
+                    </td>
+                    <td className="px-2.5 py-4 text-center text-sm text-cream/40 sm:px-5">
+                      <span aria-hidden>—</span>
+                      <span className="sr-only">Niet van toepassing</span>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
           </Reveal>
         </div>
