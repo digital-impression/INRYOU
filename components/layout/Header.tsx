@@ -36,15 +36,15 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-charcoal transition-shadow duration-500 ${
-        scrolled ? "shadow-[0_10px_30px_-18px_rgba(38,13,16,0.9)]" : ""
+      className={`sticky top-0 z-50 bg-beige transition-shadow duration-500 ${
+        scrolled ? "shadow-[0_10px_30px_-20px_rgba(56,22,26,0.55)]" : ""
       }`}
     >
       <div className="container-px mx-auto flex h-[68px] max-w-7xl items-center justify-between">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setMenuOpen(true)}
-            className="-ml-1 flex h-9 w-9 items-center justify-center rounded-full text-cream transition hover:bg-cream/10 lg:hidden"
+            className="-ml-1 flex h-9 w-9 items-center justify-center rounded-full text-charcoal transition hover:bg-charcoal/5 lg:hidden"
             aria-label="Menu openen"
           >
             <span className="flex flex-col gap-[5px]">
@@ -53,7 +53,7 @@ export function Header() {
               <span className="block h-[1.5px] w-3.5 bg-current" />
             </span>
           </button>
-          <Logo tone="light" />
+          <Logo />
         </div>
 
         <nav className="hidden items-center gap-9 lg:flex">
@@ -63,8 +63,8 @@ export function Header() {
               href={item.href}
               className={`link-underline text-sm font-medium tracking-wide transition-colors ${
                 pathname.startsWith(item.href)
-                  ? "text-cream"
-                  : "text-cream/65 hover:text-cream"
+                  ? "text-charcoal"
+                  : "text-ink hover:text-charcoal"
               }`}
             >
               {item.label}
@@ -82,7 +82,7 @@ export function Header() {
           <button
             onClick={openCart}
             aria-label={`Open winkelmandje, ${count} artikelen`}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-cream transition hover:bg-cream/10"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-charcoal transition hover:bg-charcoal/5"
           >
             <CartIcon className="h-5 w-5" />
             <AnimatePresence>
@@ -118,14 +118,14 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.45 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-sm flex-col bg-charcoal px-7 py-6 lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-sm flex-col bg-beige px-7 py-6 lg:hidden"
             >
               <div className="flex items-center justify-between">
-                <Logo tone="light" />
+                <Logo />
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label="Menu sluiten"
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-cream hover:bg-cream/10"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-charcoal hover:bg-charcoal/5"
                 >
                   <Close className="h-5 w-5" />
                 </button>
@@ -140,7 +140,7 @@ export function Header() {
                   >
                     <Link
                       href={item.href}
-                      className="block border-b border-cream/12 py-4 font-display text-2xl text-cream"
+                      className="block border-b border-charcoal/10 py-4 font-display text-2xl text-charcoal"
                     >
                       {item.label}
                     </Link>

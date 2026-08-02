@@ -1,26 +1,39 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stars } from "@/components/ui/Stars";
+import { Splatter } from "@/components/ui/Splatter";
+import { Parallax } from "@/components/ui/Parallax";
 import { Quote } from "@/components/ui/icons";
 import { reviews } from "@/lib/reviews";
+import { asset } from "@/lib/asset";
 
 const flavorStyle: Record<
   string,
-  { card: string; avatar: string; pill: string }
+  { card: string; avatar: string; pill: string; field: string; paint: string; can: string | null }
 > = {
   Cranberry: {
     card: "bg-cranberry-soft/50",
     avatar: "bg-cranberry text-white",
     pill: "bg-cranberry/10 text-cranberry-deep",
+    field: "bg-cranberry-soft",
+    paint: "var(--color-cranberry)",
+    can: "/images/can-cranberry.png",
   },
   "Ginger & Citrus": {
     card: "bg-orange-soft/50",
     avatar: "bg-orange text-white",
     pill: "bg-orange/10 text-orange-deep",
+    field: "bg-orange-soft",
+    paint: "var(--color-orange)",
+    can: "/images/can-ginger-citrus.png",
   },
   "Kweepeer & Vanille": {
     card: "bg-sage-soft/50",
     avatar: "bg-sage-deep text-white",
     pill: "bg-sage-deep/10 text-sage-deep",
+    field: "bg-sage-soft",
+    paint: "var(--color-sage-deep)",
+    can: null,
   },
 };
 
@@ -36,6 +49,7 @@ function initials(name: string) {
 export function Testimonials() {
   const [featured, ...rest] = reviews;
   const fs = (f: string) => flavorStyle[f] ?? flavorStyle["Cranberry"];
+  const hero = fs(featured.flavor);
 
   return (
     <section className="bg-cream-deep">
@@ -69,34 +83,56 @@ export function Testimonials() {
         </div>
 
         <div className="mt-12 space-y-6">
-          {/* Featured review */}
+          {/*
+            The lead review is about a specific can, so the can is in it: the
+            product carries the social proof instead of an initials bubble.
+          */}
           <Reveal as="div">
-            <div
-              className={`grid gap-6 overflow-hidden rounded-[1.75rem] p-8 ring-1 ring-charcoal/5 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10 ${fs(featured.flavor).card}`}
-            >
-              <div className="flex items-center gap-4 sm:flex-col sm:items-start">
-                <span
-                  className={`flex h-16 w-16 items-center justify-center rounded-full font-display text-2xl ${fs(featured.flavor).avatar}`}
-                >
-                  {initials(featured.name)}
+            <div className="grid overflow-hidden rounded-[1.75rem] ring-1 ring-charcoal/5 lg:grid-cols-[0.42fr_0.58fr]">
+              <div
+                className={`relative flex min-h-[300px] items-center justify-center overflow-hidden lg:min-h-[380px] ${hero.field}`}
+              >
+                <Splatter
+                  seed={44}
+                  color={hero.paint}
+                  opacity={0.45}
+                  arms={7}
+                  className="left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2"
+                />
+                {hero.can && (
+                  <Parallax distance={-22} className="relative">
+                    <Image
+                      src={asset(hero.can)}
+                      alt={`INRYOU ${featured.flavor} blik`}
+                      width={316}
+                      height={700}
+                      className="h-[240px] w-auto -rotate-6 object-contain drop-shadow-[0_26px_32px_rgba(56,22,26,0.35)] lg:h-[300px]"
+                    />
+                  </Parallax>
+                )}
+                <span className="absolute bottom-5 left-5 rounded-full bg-white/80 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-charcoal backdrop-blur">
+                  {featured.flavor}
                 </span>
-                <div>
-                  <p className="font-medium text-charcoal">{featured.name}</p>
-                  <p className="text-sm text-muted">{featured.location}</p>
-                </div>
               </div>
-              <div>
+
+              <div className="flex flex-col justify-center bg-white/70 p-8 sm:p-10 lg:p-12">
                 <Quote className="h-8 w-8 text-charcoal/15" />
-                <p className="mt-2 font-display text-2xl leading-snug text-charcoal sm:text-3xl">
-                  "{featured.body}"
+                <p className="mt-3 font-display text-2xl leading-snug text-charcoal sm:text-3xl">
+                  &ldquo;{featured.body}&rdquo;
                 </p>
-                <div className="mt-5 flex items-center gap-3">
-                  <Stars rating={featured.rating} />
+                <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
                   <span
-                    className={`rounded-full px-3 py-1 text-xs font-medium ${fs(featured.flavor).pill}`}
+                    className={`flex h-11 w-11 items-center justify-center rounded-full font-display text-lg ${hero.avatar}`}
                   >
-                    {featured.flavor}
+                    {initials(featured.name)}
                   </span>
+                  <div>
+                    <p className="font-medium text-charcoal">{featured.name}</p>
+                    <p className="text-sm text-muted">{featured.location}</p>
+                  </div>
+                  <div className="ml-auto">
+                    <Stars rating={featured.rating} />
+                  </div>
                 </div>
               </div>
             </div>

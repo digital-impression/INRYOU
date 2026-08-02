@@ -45,13 +45,13 @@ export function Lifestyle() {
           href="/our-story"
           className="group grid overflow-hidden rounded-[2rem] ring-1 ring-charcoal/5 transition-shadow duration-500 hover:shadow-[0_30px_60px_-32px_rgba(56,22,26,0.3)] lg:grid-cols-2"
         >
-          <div className="relative min-h-[260px] lg:min-h-[340px]">
+          <div className="relative min-h-[300px] lg:min-h-[500px]">
             <Image
               src={asset("/images/can-in-hand.jpg")}
               alt="Een INRYOU Cranberry blik tegen een heldere lucht"
               fill
               sizes="(min-width:1024px) 50vw, 100vw"
-              className="object-cover object-[50%_38%] transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+              className="object-cover object-[50%_46%] transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
             <span className="absolute left-8 top-8 text-xs font-semibold uppercase tracking-[0.16em] text-cream">

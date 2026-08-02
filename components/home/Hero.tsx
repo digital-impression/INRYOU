@@ -7,6 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Stars } from "@/components/ui/Stars";
 import { ArrowRight } from "@/components/ui/icons";
 import { Splatter } from "@/components/ui/Splatter";
+import { Parallax } from "@/components/ui/Parallax";
 import { asset } from "@/lib/asset";
 
 const fade = {
@@ -80,6 +81,7 @@ export function Hero() {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0"
           >
+            <Parallax distance={70} className="absolute inset-0">
             <Splatter
               seed={41}
               color={flavor.paint}
@@ -94,6 +96,7 @@ export function Hero() {
               arms={5}
               className="-bottom-[42%] left-[24%] h-[560px] w-[560px]"
             />
+            </Parallax>
           </motion.div>
         </AnimatePresence>
         <div className="absolute inset-0 grain opacity-50" />
@@ -190,6 +193,7 @@ export function Hero() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0"
             >
+              <Parallax distance={42} className="absolute inset-0">
               <Splatter
                 seed={23}
                 color={flavor.paint}
@@ -203,6 +207,7 @@ export function Hero() {
                 arms={6}
                 className="left-[62%] top-[56%] h-[104%] w-[104%] -translate-x-1/2 -translate-y-1/2"
               />
+              </Parallax>
             </motion.div>
           </AnimatePresence>
 
@@ -237,7 +242,10 @@ export function Hero() {
           )}
 
           {/* The can */}
-          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+          <Parallax
+            distance={-34}
+            className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
+          >
             <div className="animate-float-slower">
               <AnimatePresence mode="popLayout">
                 <motion.div
@@ -258,7 +266,7 @@ export function Hero() {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
+          </Parallax>
 
           {/* Flavour readout */}
           <div className="absolute bottom-0 left-0 z-30 flex items-end gap-5">
@@ -281,16 +289,20 @@ export function Hero() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="flex shrink-0 gap-2 pb-2">
+            <div className="flex shrink-0 flex-wrap gap-2 pb-1">
               {flavors.map((f, idx) => (
                 <button
                   key={f.name}
                   onClick={() => setI(idx)}
-                  aria-label={`Toon ${f.name}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === i ? "w-7 bg-charcoal" : "w-2 bg-charcoal/25"
+                  aria-pressed={idx === i}
+                  className={`rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide transition-all duration-300 ${
+                    idx === i
+                      ? "bg-charcoal text-cream"
+                      : "bg-white/70 text-ink ring-1 ring-charcoal/15 hover:bg-white"
                   }`}
-                />
+                >
+                  {f.name}
+                </button>
               ))}
             </div>
           </div>

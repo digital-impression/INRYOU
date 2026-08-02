@@ -7,9 +7,7 @@ export function AnnouncementBar() {
   const track = Array.from({ length: 6 }).flatMap(() => messages);
 
   return (
-    // Light sand rather than brown — the header underneath now carries the
-    // dark brand colour, and two stacked dark bars would read as one heavy slab.
-    <div className="overflow-hidden bg-sand text-charcoal-soft">
+    <div className="overflow-hidden bg-charcoal text-cream/70">
       <div className="flex w-max animate-marquee-slow">
         {[0, 1].map((dup) => (
           <ul
@@ -23,7 +21,7 @@ export function AnnouncementBar() {
                 className="flex items-center gap-7 whitespace-nowrap px-7 py-2 font-display text-[0.9rem] italic tracking-wide"
               >
                 {m}
-                <span className="not-italic text-orange-deep/60">◦</span>
+                <span className="not-italic text-orange/70">◦</span>
               </li>
             ))}
           </ul>

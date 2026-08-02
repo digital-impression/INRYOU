@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Splatter } from "@/components/ui/Splatter";
+import { Parallax } from "@/components/ui/Parallax";
 import { IconBadge, type BadgeTone } from "@/components/ui/IconBadge";
 import { Heart, Check, Drop, Recycle, Globe, Sparkle } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
@@ -75,13 +76,15 @@ export function Rooted() {
             <div className="absolute inset-0 bg-charcoal/55" />
           </>
         )}
-        <Splatter
-          seed={31}
-          color="var(--color-cream)"
-          opacity={0.055}
-          arms={8}
-          className="-right-32 -top-32 h-[520px] w-[520px]"
-        />
+        <Parallax distance={64} className="pointer-events-none absolute inset-0">
+          <Splatter
+            seed={31}
+            color="var(--color-cream)"
+            opacity={0.055}
+            arms={8}
+            className="-right-32 -top-32 h-[520px] w-[520px]"
+          />
+        </Parallax>
 
         <div className="relative">
           <div className="text-center">

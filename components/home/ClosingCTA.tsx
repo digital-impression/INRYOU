@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { ArrowRight, Truck, Recycle, Heart } from "@/components/ui/icons";
 import { Splatter } from "@/components/ui/Splatter";
+import { Parallax } from "@/components/ui/Parallax";
 import { asset } from "@/lib/asset";
 
 const perks = [
@@ -16,6 +17,7 @@ export function ClosingCTA() {
   return (
     <section className="container-px mx-auto max-w-7xl py-20 lg:py-28">
       <div className="relative overflow-hidden rounded-[2.5rem] bg-charcoal px-6 py-16 text-cream sm:px-12 lg:px-16 lg:py-20">
+        <Parallax distance={70} className="pointer-events-none absolute inset-0">
         <Splatter
           seed={64}
           color="var(--color-orange)"
@@ -30,6 +32,7 @@ export function ClosingCTA() {
           arms={7}
           className="-bottom-32 -left-24 h-[440px] w-[440px]"
         />
+        </Parallax>
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <Reveal>
