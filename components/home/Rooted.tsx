@@ -121,10 +121,11 @@ export function Rooted() {
             >
               <Splatter
                 seed={52}
+                variant="burst"
                 color="var(--color-cranberry)"
-                opacity={0.42}
-                arms={8}
-                className="bottom-[2%] left-1/2 h-[330px] w-[330px] -translate-x-1/2 lg:h-[420px] lg:w-[420px]"
+                opacity={0.5}
+                arms={9}
+                className="bottom-[-6%] left-1/2 h-[380px] w-[380px] -translate-x-1/2 lg:h-[480px] lg:w-[480px]"
               />
               <Image
                 src={asset("/images/can-cranberry.png")}

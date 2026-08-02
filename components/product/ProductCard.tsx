@@ -24,10 +24,11 @@ export function ProductCard({ product }: { product: Product }) {
       {/* The flavour thrown behind the can */}
       <Splatter
         seed={seed}
+        variant="burst"
         color={product.accent}
-        opacity={0.55}
-        arms={5}
-        className="bottom-[-4%] left-1/2 h-[118%] w-[118%] -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+        opacity={0.5}
+        arms={8}
+        className="bottom-[-8%] left-1/2 h-[126%] w-[126%] -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
       />
 
       {/* Badge */}

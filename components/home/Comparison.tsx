@@ -25,10 +25,19 @@ export function Comparison() {
         />
         <Splatter
           seed={73}
+          variant="burst"
           color="var(--color-orange)"
-          opacity={0.09}
-          arms={7}
-          className="-bottom-[26%] right-[2%] h-[480px] w-[480px]"
+          opacity={0.1}
+          arms={8}
+          className="-bottom-[26%] right-[2%] h-[520px] w-[520px]"
+        />
+        <Splatter
+          seed={91}
+          variant="spray"
+          color="var(--color-cream)"
+          opacity={0.1}
+          arms={8}
+          className="left-[38%] top-[6%] h-[300px] w-[300px]"
         />
       </Parallax>
 

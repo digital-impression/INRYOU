@@ -94,10 +94,11 @@ export function Testimonials() {
               >
                 <Splatter
                   seed={44}
+                  variant="burst"
                   color={hero.paint}
-                  opacity={0.45}
-                  arms={7}
-                  className="left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2"
+                  opacity={0.42}
+                  arms={8}
+                  className="left-1/2 top-1/2 h-[128%] w-[128%] -translate-x-1/2 -translate-y-1/2"
                 />
                 {hero.can && (
                   <Parallax distance={-22} className="relative">

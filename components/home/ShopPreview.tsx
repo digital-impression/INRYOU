@@ -14,10 +14,11 @@ export function ShopPreview() {
       <div className="relative flex flex-col items-center text-center">
         <Splatter
           seed={17}
+          variant="spray"
           color="var(--color-orange)"
-          opacity={0.12}
-          arms={8}
-          className="left-1/2 top-[-90px] h-[300px] w-[300px] -translate-x-1/2"
+          opacity={0.16}
+          arms={9}
+          className="left-[62%] top-[-96px] h-[230px] w-[230px]"
         />
         <Reveal>
           <p className="eyebrow text-cranberry">Shop</p>

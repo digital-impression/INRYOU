@@ -91,10 +91,19 @@ export function Hero() {
             />
             <Splatter
               seed={7}
+              variant="burst"
               color={flavor.paintDeep}
-              opacity={0.07}
-              arms={5}
-              className="-bottom-[42%] left-[24%] h-[560px] w-[560px]"
+              opacity={0.08}
+              arms={8}
+              className="-bottom-[38%] left-[20%] h-[600px] w-[600px]"
+            />
+            <Splatter
+              seed={19}
+              variant="spray"
+              color={flavor.paint}
+              opacity={0.16}
+              arms={9}
+              className="left-[6%] top-[48%] h-[340px] w-[340px]"
             />
             </Parallax>
           </motion.div>
@@ -196,16 +205,25 @@ export function Hero() {
               <Parallax distance={42} className="absolute inset-0">
               <Splatter
                 seed={23}
+                variant="burst"
                 color={flavor.paint}
                 arms={9}
-                className="left-[46%] top-1/2 h-[134%] w-[134%] -translate-x-1/2 -translate-y-1/2"
+                className="left-[46%] top-[48%] h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2"
               />
               <Splatter
                 seed={88}
                 color={flavor.paintDeep}
-                opacity={0.5}
+                opacity={0.45}
                 arms={6}
-                className="left-[62%] top-[56%] h-[104%] w-[104%] -translate-x-1/2 -translate-y-1/2"
+                className="left-[62%] top-[58%] h-[96%] w-[96%] -translate-x-1/2 -translate-y-1/2"
+              />
+              <Splatter
+                seed={57}
+                variant="spray"
+                color={flavor.paint}
+                opacity={0.7}
+                arms={10}
+                className="-right-[6%] top-[16%] h-[300px] w-[300px]"
               />
               </Parallax>
             </motion.div>

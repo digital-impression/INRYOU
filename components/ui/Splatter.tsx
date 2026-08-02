@@ -1,50 +1,186 @@
 /**
- * The brand's splash device: a paint-splat.
+ * The brand's splash device.
  *
- * A union of discs — however irregularly you scatter them — still reads as
- * discs, because every edge stays a perfect arc. So the shape is built from a
- * simple asymmetric mass plus satellites and then torn apart by a turbulence
- * displacement filter, which is what gives paint its ragged edge and stringy
- * tendrils. Opacity lives on the group so overlaps never darken.
+ * Every shape is a simple geometric source torn apart by a turbulence
+ * displacement filter — that is what produces a ragged paint edge and stringy
+ * tendrils; a union of discs, however irregularly scattered, still reads as
+ * discs because every edge stays a perfect arc.
  *
- * Fully deterministic — the variation comes from feTurbulence's own `seed`, so
- * there is no randomness to mismatch between server and browser.
+ * The source geometry is what separates the variants, and it matters: one big
+ * mass distorted at high amplitude reads like a coastline, so anything that
+ * should read as *liquid* needs radial structure the filter only roughens
+ * rather than dissolves.
+ *
+ *   blob   — an asymmetric mass. Weight and ground; use it large and behind.
+ *   burst  — a drop impact: tapered arms thrown off a core. The liquid one.
+ *   spray  — flicked paint, almost all droplets, barely any body.
+ *   drip   — a mass with runs hanging off its lower edge.
+ *
+ * Fully deterministic — variation comes from feTurbulence's own `seed` and from
+ * arithmetic on it, so nothing can mismatch between server and browser.
  */
 
-type Blob = { cx: number; cy: number; r: number };
+export type SplatVariant = "blob" | "burst" | "spray" | "drip";
 
 const TAU = Math.PI * 2;
 
-/** Cheap deterministic jitter so each seed lays its satellites out differently. */
-function scatter(seed: number, count: number, near: number, far: number): Blob[] {
-  const out: Blob[] = [];
-  for (let i = 0; i < count; i++) {
-    // Golden-angle walk: even coverage, no clustering, no RNG.
-    const a = (i * 2.399963 + seed * 0.7) % TAU;
-    const t = (Math.sin(seed * 12.9898 + i * 78.233) + 1) / 2;
-    const d = near + (far - near) * t;
-    const r = 3 + 9 * (1 - t) * ((Math.cos(seed + i * 3.7) + 1) / 2);
-    out.push({ cx: 100 + Math.cos(a) * d, cy: 100 + Math.sin(a) * d, r });
-  }
-  return out;
+/**
+ * Deterministic 0..1 from a seed and an index.
+ *
+ * An integer hash rather than the usual sin(dot(...)) trick: that aliases badly
+ * for consecutive indices, and the smooth runs it produces made the spray
+ * droplets line up into a neat arc instead of scattering.
+ */
+function noise(seed: number, i: number) {
+  let h = (Math.imul(seed, 374761393) + Math.imul(i, 668265263)) >>> 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177) >>> 0;
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
 }
+
+const tune: Record<
+  SplatVariant,
+  { frequency: number; scale: number; octaves: number }
+> = {
+  // High amplitude: the mass should barely remember it was circles.
+  blob: { frequency: 0.018, scale: 54, octaves: 4 },
+  // Low amplitude: keep the radial throw legible, just roughen its edges.
+  burst: { frequency: 0.03, scale: 22, octaves: 3 },
+  spray: { frequency: 0.05, scale: 13, octaves: 2 },
+  drip: { frequency: 0.022, scale: 17, octaves: 3 },
+};
+
+function blobSource(seed: number, arms: number) {
+  const parts = [
+    <circle key="c0" cx="100" cy="100" r="40" />,
+    <circle key="c1" cx="122" cy="88" r="26" />,
+    <circle key="c2" cx="82" cy="118" r="29" />,
+    <circle key="c3" cx="115" cy="122" r="20" />,
+  ];
+  for (let i = 0; i < arms; i++) {
+    const a = (i * 2.399963 + seed * 0.7) % TAU;
+    const t = noise(seed, i);
+    const d = 46 + 38 * t;
+    parts.push(
+      <circle
+        key={`d${i}`}
+        cx={100 + Math.cos(a) * d}
+        cy={100 + Math.sin(a) * d}
+        r={3 + 9 * (1 - t) * ((Math.cos(seed + i * 3.7) + 1) / 2)}
+      />,
+    );
+  }
+  return parts;
+}
+
+/** A drop hitting a surface: uneven tapered arms, each ending in a bead. */
+function burstSource(seed: number, arms: number) {
+  const parts = [<circle key="core" cx="100" cy="100" r="26" />];
+  const n = Math.max(5, arms);
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * TAU + noise(seed, i) * 0.7;
+    const len = 34 + 46 * noise(seed, i + 40);
+    const w = 5 + 7 * noise(seed, i + 80);
+    const dx = Math.cos(a);
+    const dy = Math.sin(a);
+    const px = -dy;
+    const py = dx;
+    const tipX = 100 + dx * len;
+    const tipY = 100 + dy * len;
+    parts.push(
+      <path
+        key={`a${i}`}
+        d={`M${(100 + px * w).toFixed(1)},${(100 + py * w).toFixed(1)} L${tipX.toFixed(1)},${tipY.toFixed(1)} L${(100 - px * w).toFixed(1)},${(100 - py * w).toFixed(1)} Z`}
+      />,
+    );
+    // Bead flung off the tip, detached often enough to read as thrown
+    const gap = 6 + 12 * noise(seed, i + 120);
+    parts.push(
+      <circle
+        key={`b${i}`}
+        cx={tipX + dx * gap}
+        cy={tipY + dy * gap}
+        r={1.5 + 5 * noise(seed, i + 160)}
+      />,
+    );
+  }
+  return parts;
+}
+
+/** Flicked paint — almost no body, thrown along one axis. */
+function spraySource(seed: number, arms: number) {
+  const dir = noise(seed, 3) * TAU;
+  const count = Math.max(22, arms * 4);
+  const parts = [];
+  for (let i = 0; i < count; i++) {
+    // A wide fan around `dir`, tightening as the droplets travel further
+    const reach = noise(seed, i + 200);
+    const spread = 2.3 * (1 - reach * 0.55);
+    const a = dir + (noise(seed, i + 7) - 0.5) * spread;
+    const d = 10 + 88 * reach;
+    parts.push(
+      <circle
+        key={i}
+        cx={100 + Math.cos(a) * d}
+        cy={100 + Math.sin(a) * d}
+        // Cubed: overwhelmingly fine, with the odd fat drop
+        r={1 + 10 * Math.pow(noise(seed, i + 300), 3)}
+      />,
+    );
+  }
+  return parts;
+}
+
+/** A mass with runs sagging off its lower edge. */
+function dripSource(seed: number, arms: number) {
+  const parts = [
+    <ellipse key="m" cx="100" cy="86" rx="52" ry="30" />,
+    <ellipse key="m2" cx="118" cy="78" rx="30" ry="20" />,
+  ];
+  const n = Math.max(3, Math.round(arms / 2));
+  for (let i = 0; i < n; i++) {
+    const x = 58 + (84 / Math.max(1, n - 1)) * i + noise(seed, i) * 10;
+    const len = 26 + 58 * noise(seed, i + 30);
+    const w = 3 + 5 * noise(seed, i + 60);
+    parts.push(
+      <rect
+        key={`r${i}`}
+        x={x - w}
+        y={100}
+        width={w * 2}
+        height={len}
+        rx={w}
+      />,
+      <circle key={`h${i}`} cx={x} cy={100 + len} r={w * 1.5} />,
+    );
+  }
+  return parts;
+}
+
+const sources = {
+  blob: blobSource,
+  burst: burstSource,
+  spray: spraySource,
+  drip: dripSource,
+};
 
 export function Splatter({
   seed = 1,
+  variant = "blob",
   color,
   opacity = 1,
-  /** Satellites flung clear of the main mass. */
+  /** Satellites for `blob`, arms for `burst`, density for `spray`/`drip`. */
   arms = 7,
   className = "",
 }: {
   seed?: number;
+  variant?: SplatVariant;
   color: string;
   opacity?: number;
   arms?: number;
   className?: string;
 }) {
-  const id = `splat-${seed}`;
-  const drops = scatter(seed, arms, 46, 84);
+  const id = `splat-${variant}-${seed}`;
+  const t = tune[variant];
 
   return (
     <svg
@@ -63,15 +199,15 @@ export function Splatter({
         >
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.018"
-            numOctaves={4}
+            baseFrequency={t.frequency}
+            numOctaves={t.octaves}
             seed={seed}
             result="noise"
           />
           <feDisplacementMap
             in="SourceGraphic"
             in2="noise"
-            scale={54}
+            scale={t.scale}
             xChannelSelector="R"
             yChannelSelector="G"
           />
@@ -79,14 +215,7 @@ export function Splatter({
       </defs>
 
       <g fill={color} opacity={opacity} filter={`url(#${id})`}>
-        {/* Asymmetric mass — the displacement does the rest */}
-        <circle cx="100" cy="100" r="40" />
-        <circle cx="122" cy="88" r="26" />
-        <circle cx="82" cy="118" r="29" />
-        <circle cx="115" cy="122" r="20" />
-        {drops.map((d, i) => (
-          <circle key={i} cx={d.cx} cy={d.cy} r={d.r} />
-        ))}
+        {sources[variant](seed, arms)}
       </g>
     </svg>
   );

@@ -37,10 +37,19 @@ export function WhereToBuy() {
         />
         <Splatter
           seed={61}
+          variant="burst"
           color="var(--color-cranberry)"
-          opacity={0.16}
-          arms={6}
-          className="-bottom-[46%] left-[6%] h-[420px] w-[420px]"
+          opacity={0.2}
+          arms={7}
+          className="-bottom-[52%] left-[6%] h-[460px] w-[460px]"
+        />
+        <Splatter
+          seed={28}
+          variant="spray"
+          color="var(--color-orange)"
+          opacity={0.3}
+          arms={8}
+          className="left-[34%] top-[-18%] h-[280px] w-[280px]"
         />
       </Parallax>
       <div
