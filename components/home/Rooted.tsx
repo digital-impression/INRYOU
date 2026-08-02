@@ -80,8 +80,8 @@ export function Rooted() {
           <Splatter
             seed={31}
             color="var(--color-cream)"
-            opacity={0.055}
-            arms={8}
+            opacity={0.1}
+            arms={10}
             className="-right-32 -top-32 h-[520px] w-[520px]"
           />
         </Parallax>
@@ -123,7 +123,7 @@ export function Rooted() {
                 seed={52}
                 variant="burst"
                 color="var(--color-cranberry)"
-                opacity={0.5}
+                opacity={0.62}
                 arms={9}
                 className="bottom-[-6%] left-1/2 h-[380px] w-[380px] -translate-x-1/2 lg:h-[480px] lg:w-[480px]"
               />

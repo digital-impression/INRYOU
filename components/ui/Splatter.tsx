@@ -6,13 +6,13 @@
  * tendrils; a union of discs, however irregularly scattered, still reads as
  * discs because every edge stays a perfect arc.
  *
- * The source geometry is what separates the variants, and it matters: one big
- * mass distorted at high amplitude reads like a coastline, so anything that
- * should read as *liquid* needs radial structure the filter only roughens
- * rather than dissolves.
+ * The source geometry is what separates the variants, and it matters: an
+ * amorphous mass reads as a coastline no matter how you tune the filter —
+ * softening it only turned the archipelago into a continent. Liquid needs
+ * radial structure the filter roughens rather than dissolves, so every variant
+ * here is built from a throw direction outward.
  *
- *   blob   — an asymmetric mass. Weight and ground; use it large and behind.
- *   burst  — a drop impact: tapered arms thrown off a core. The liquid one.
+ *   burst  — a drop impact: tapered arms thrown off a core. The default.
  *   spray  — flicked paint, almost all droplets, barely any body.
  *   drip   — a mass with runs hanging off its lower edge.
  *
@@ -20,7 +20,7 @@
  * arithmetic on it, so nothing can mismatch between server and browser.
  */
 
-export type SplatVariant = "blob" | "burst" | "spray" | "drip";
+export type SplatVariant = "burst" | "spray" | "drip";
 
 const TAU = Math.PI * 2;
 
@@ -41,36 +41,11 @@ const tune: Record<
   SplatVariant,
   { frequency: number; scale: number; octaves: number }
 > = {
-  // High amplitude: the mass should barely remember it was circles.
-  blob: { frequency: 0.018, scale: 54, octaves: 4 },
   // Low amplitude: keep the radial throw legible, just roughen its edges.
   burst: { frequency: 0.03, scale: 22, octaves: 3 },
   spray: { frequency: 0.05, scale: 13, octaves: 2 },
   drip: { frequency: 0.022, scale: 17, octaves: 3 },
 };
-
-function blobSource(seed: number, arms: number) {
-  const parts = [
-    <circle key="c0" cx="100" cy="100" r="40" />,
-    <circle key="c1" cx="122" cy="88" r="26" />,
-    <circle key="c2" cx="82" cy="118" r="29" />,
-    <circle key="c3" cx="115" cy="122" r="20" />,
-  ];
-  for (let i = 0; i < arms; i++) {
-    const a = (i * 2.399963 + seed * 0.7) % TAU;
-    const t = noise(seed, i);
-    const d = 46 + 38 * t;
-    parts.push(
-      <circle
-        key={`d${i}`}
-        cx={100 + Math.cos(a) * d}
-        cy={100 + Math.sin(a) * d}
-        r={3 + 9 * (1 - t) * ((Math.cos(seed + i * 3.7) + 1) / 2)}
-      />,
-    );
-  }
-  return parts;
-}
 
 /** A drop hitting a surface: uneven tapered arms, each ending in a bead. */
 function burstSource(seed: number, arms: number) {
@@ -157,7 +132,6 @@ function dripSource(seed: number, arms: number) {
 }
 
 const sources = {
-  blob: blobSource,
   burst: burstSource,
   spray: spraySource,
   drip: dripSource,
@@ -165,10 +139,10 @@ const sources = {
 
 export function Splatter({
   seed = 1,
-  variant = "blob",
+  variant = "burst",
   color,
   opacity = 1,
-  /** Satellites for `blob`, arms for `burst`, density for `spray`/`drip`. */
+  /** Arms for `burst`, density for `spray` and `drip`. */
   arms = 7,
   className = "",
 }: {

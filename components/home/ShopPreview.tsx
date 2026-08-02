@@ -16,7 +16,7 @@ export function ShopPreview() {
           seed={17}
           variant="spray"
           color="var(--color-orange)"
-          opacity={0.16}
+          opacity={0.3}
           arms={9}
           className="left-[62%] top-[-96px] h-[230px] w-[230px]"
         />

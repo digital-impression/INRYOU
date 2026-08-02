@@ -85,15 +85,15 @@ export function Hero() {
             <Splatter
               seed={41}
               color={flavor.paint}
-              opacity={0.09}
-              arms={7}
+              opacity={0.2}
+              arms={10}
               className="-left-[16%] -top-[34%] h-[760px] w-[760px]"
             />
             <Splatter
               seed={7}
               variant="burst"
               color={flavor.paintDeep}
-              opacity={0.08}
+              opacity={0.18}
               arms={8}
               className="-bottom-[38%] left-[20%] h-[600px] w-[600px]"
             />
@@ -101,7 +101,7 @@ export function Hero() {
               seed={19}
               variant="spray"
               color={flavor.paint}
-              opacity={0.16}
+              opacity={0.34}
               arms={9}
               className="left-[6%] top-[48%] h-[340px] w-[340px]"
             />
@@ -213,15 +213,15 @@ export function Hero() {
               <Splatter
                 seed={88}
                 color={flavor.paintDeep}
-                opacity={0.45}
-                arms={6}
+                opacity={0.55}
+                arms={8}
                 className="left-[62%] top-[58%] h-[96%] w-[96%] -translate-x-1/2 -translate-y-1/2"
               />
               <Splatter
                 seed={57}
                 variant="spray"
                 color={flavor.paint}
-                opacity={0.7}
+                opacity={0.85}
                 arms={10}
                 className="-right-[6%] top-[16%] h-[300px] w-[300px]"
               />

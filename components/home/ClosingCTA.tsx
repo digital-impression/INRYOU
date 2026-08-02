@@ -22,15 +22,15 @@ export function ClosingCTA() {
           seed={64}
           variant="burst"
           color="var(--color-orange)"
-          opacity={0.24}
+          opacity={0.36}
           arms={9}
           className="-right-28 -top-36 h-[580px] w-[580px]"
         />
         <Splatter
           seed={5}
           color="var(--color-cream)"
-          opacity={0.05}
-          arms={7}
+          opacity={0.1}
+          arms={9}
           className="-bottom-32 -left-24 h-[440px] w-[440px]"
         />
         </Parallax>

@@ -31,15 +31,15 @@ export function WhereToBuy() {
         <Splatter
           seed={39}
           color="var(--color-orange)"
-          opacity={0.2}
-          arms={8}
+          opacity={0.36}
+          arms={10}
           className="-right-[8%] -top-[40%] h-[520px] w-[520px]"
         />
         <Splatter
           seed={61}
           variant="burst"
           color="var(--color-cranberry)"
-          opacity={0.2}
+          opacity={0.34}
           arms={7}
           className="-bottom-[52%] left-[6%] h-[460px] w-[460px]"
         />
@@ -47,7 +47,7 @@ export function WhereToBuy() {
           seed={28}
           variant="spray"
           color="var(--color-orange)"
-          opacity={0.3}
+          opacity={0.45}
           arms={8}
           className="left-[34%] top-[-18%] h-[280px] w-[280px]"
         />

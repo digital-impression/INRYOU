@@ -96,7 +96,7 @@ export function Testimonials() {
                   seed={44}
                   variant="burst"
                   color={hero.paint}
-                  opacity={0.42}
+                  opacity={0.58}
                   arms={8}
                   className="left-1/2 top-1/2 h-[128%] w-[128%] -translate-x-1/2 -translate-y-1/2"
                 />

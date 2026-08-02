@@ -26,7 +26,7 @@ export function ProductCard({ product }: { product: Product }) {
         seed={seed}
         variant="burst"
         color={product.accent}
-        opacity={0.5}
+        opacity={0.68}
         arms={8}
         className="bottom-[-8%] left-1/2 h-[126%] w-[126%] -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
       />
