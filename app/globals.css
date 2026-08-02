@@ -219,6 +219,28 @@
   animation: marquee 105s linear infinite;
 }
 
+/* Carbonation rising through the hero stage. Each bubble sets its own
+   --b-o (peak opacity), --b-x (drift) and duration/delay inline. */
+@keyframes bubble-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.85);
+    opacity: 0;
+  }
+  14% {
+    opacity: var(--b-o, 0.5);
+  }
+  82% {
+    opacity: var(--b-o, 0.5);
+  }
+  100% {
+    transform: translate3d(var(--b-x, 0), -420px, 0) scale(1.2);
+    opacity: 0;
+  }
+}
+.animate-bubble {
+  animation: bubble-rise var(--b-d, 9s) linear var(--b-delay, 0s) infinite;
+}
+
 /* Signature orb — very slow ambient rotation & breathing for decorative use */
 @keyframes orb-spin {
   to {
@@ -247,6 +269,7 @@
   .animate-float-slow,
   .animate-float-slower,
   .animate-marquee-slow,
+  .animate-bubble,
   .animate-orb-spin,
   .animate-orb-breathe {
     animation: none;
