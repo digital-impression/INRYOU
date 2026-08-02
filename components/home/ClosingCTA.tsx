@@ -20,7 +20,7 @@ export function ClosingCTA() {
         <Parallax distance={70} className="pointer-events-none absolute inset-0">
         <Splatter
           seed={64}
-          variant="burst"
+          variant="splash"
           color="var(--color-orange)"
           opacity={0.36}
           arms={9}

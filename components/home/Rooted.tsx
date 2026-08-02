@@ -121,7 +121,7 @@ export function Rooted() {
             >
               <Splatter
                 seed={52}
-                variant="burst"
+                variant="splash"
                 color="var(--color-cranberry)"
                 opacity={0.62}
                 arms={9}

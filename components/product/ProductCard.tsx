@@ -24,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
       {/* The flavour thrown behind the can */}
       <Splatter
         seed={seed}
-        variant="burst"
+        variant="splash"
         color={product.accent}
         opacity={0.68}
         arms={8}

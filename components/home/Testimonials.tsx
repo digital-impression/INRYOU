@@ -94,7 +94,7 @@ export function Testimonials() {
               >
                 <Splatter
                   seed={44}
-                  variant="burst"
+                  variant="splash"
                   color={hero.paint}
                   opacity={0.58}
                   arms={8}

@@ -37,7 +37,7 @@ export function WhereToBuy() {
         />
         <Splatter
           seed={61}
-          variant="burst"
+          variant="splash"
           color="var(--color-cranberry)"
           opacity={0.34}
           arms={7}

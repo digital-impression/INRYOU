@@ -29,7 +29,7 @@ export function Comparison() {
         />
         <Splatter
           seed={73}
-          variant="burst"
+          variant="splash"
           color="var(--color-orange)"
           opacity={0.22}
           arms={8}

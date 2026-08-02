@@ -85,13 +85,13 @@ export function Hero() {
             <Splatter
               seed={41}
               color={flavor.paint}
-              opacity={0.2}
+              opacity={0.17}
               arms={10}
-              className="-left-[16%] -top-[34%] h-[760px] w-[760px]"
+              className="-left-[26%] -top-[46%] h-[780px] w-[780px]"
             />
             <Splatter
               seed={7}
-              variant="burst"
+              variant="splash"
               color={flavor.paintDeep}
               opacity={0.18}
               arms={8}
@@ -205,7 +205,7 @@ export function Hero() {
               <Parallax distance={42} className="absolute inset-0">
               <Splatter
                 seed={23}
-                variant="burst"
+                variant="splash"
                 color={flavor.paint}
                 arms={9}
                 className="left-[46%] top-[48%] h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2"
@@ -216,6 +216,14 @@ export function Hero() {
                 opacity={0.55}
                 arms={8}
                 className="left-[62%] top-[58%] h-[96%] w-[96%] -translate-x-1/2 -translate-y-1/2"
+              />
+              <Splatter
+                seed={35}
+                variant="ribbon"
+                color={flavor.paint}
+                opacity={0.55}
+                arms={6}
+                className="-left-[10%] top-[6%] h-[105%] w-[105%]"
               />
               <Splatter
                 seed={57}
