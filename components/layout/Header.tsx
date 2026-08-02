@@ -36,8 +36,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-beige transition-shadow duration-500 ${
-        scrolled ? "shadow-[0_10px_30px_-20px_rgba(56,22,26,0.55)]" : ""
+      // Same cream the hero opens on, so the bar reads as part of the page until
+      // you scroll and it lifts off with a shadow.
+      className={`sticky top-0 z-50 bg-cream transition-shadow duration-500 ${
+        scrolled ? "shadow-[0_10px_30px_-20px_rgba(56,22,26,0.45)]" : ""
       }`}
     >
       <div className="container-px mx-auto flex h-[68px] max-w-7xl items-center justify-between">
@@ -118,7 +120,7 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.45 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-sm flex-col bg-beige px-7 py-6 lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-sm flex-col bg-cream px-7 py-6 lg:hidden"
             >
               <div className="flex items-center justify-between">
                 <Logo />
