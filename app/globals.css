@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — warm, calm, premium */
+  --color-cream: #fbf7ef;
+  --color-cream-deep: #f6efe2;
+  --color-sand: #f0e7d6;
+  --color-beige: #e7dbc6;
+  --color-beige-deep: #d9c9ad;
+
+  /* Single dark family — deep bordeaux, used for text AND all dark surfaces */
+  --color-charcoal: #38161a;
+  --color-charcoal-soft: #4c2226;
+  --color-ink: #5f3a3c;
+  --color-muted: #7c5c5d;
+
+  --color-orange: #e07c3a;
+  --color-orange-deep: #c6612a;
+  --color-orange-soft: #f4d9bf;
+
+  --color-cranberry: #b23a4b;
+  --color-cranberry-deep: #93303e;
+  --color-cranberry-soft: #ecc9cc;
+
+  /* Wine == the dark family (kept for existing bg-wine usages, matches charcoal) */
+  --color-wine: #38161a;
+  --color-wine-deep: #260d10;
+  --color-wine-soft: #4c2226;
+
+  --color-sage: #9aae93;
+  --color-sage-deep: #76896f;
+  --color-sage-soft: #d9e1d2;
+
+  /* Warm blush — a mid light tone between cream and the accents */
+  --color-blush: #f3e2d8;
+
+  /* Typography */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  ::selection {
+    background-color: var(--color-orange);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: var(--color-charcoal);
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-cream-deep);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-beige-deep);
+    border-radius: 999px;
+    border: 2px solid var(--color-cream-deep);
+  }
+}
+
+@layer components {
+  .container-px {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .container-px {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-orange-deep);
+  }
+
+  /* Consistent italic display accent — always a fixed ratio to the headline */
+  .accent {
+    font-style: italic;
+    font-size: 1.06em;
+    line-height: inherit;
+  }
+
+  /* Cap body-copy measure for readability (~62 characters) */
+  .measure {
+    max-width: 34rem;
+  }
+  .measure-center {
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-out-soft);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* One modular display scale used across every section headline */
+  .display-1 {
+    font-size: clamp(2.75rem, 6vw, 4.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .display-2 {
+    font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+  }
+  .display-3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.012em;
+  }
+}
+
+/* Display utility for very large editorial headings */
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Subtle floating animation for hero cans */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-1.2deg);
+  }
+}
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes float-slower {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(1deg);
+  }
+}
+.animate-float-slower {
+  animation: float-slower 9s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+/* Slower, calmer ticker for the announcement bar */
+.animate-marquee-slow {
+  animation: marquee 60s linear infinite;
+}
+
+/* Signature orb — very slow ambient rotation & breathing for decorative use */
+@keyframes orb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-orb-spin {
+  animation: orb-spin 60s linear infinite;
+}
+@keyframes orb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: var(--orb-o, 0.9);
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: calc(var(--orb-o, 0.9) * 0.82);
+  }
+}
+.animate-orb-breathe {
+  animation: orb-breathe 12s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-marquee,
+  .animate-marquee-slow,
+  .animate-orb-spin,
+  .animate-orb-breathe {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.grain {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(0, 0, 0, 0.035) 1px,
+    transparent 0
+  );
+  background-size: 4px 4px;
+}

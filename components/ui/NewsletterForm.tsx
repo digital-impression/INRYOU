@@ -1,0 +1,64 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { ArrowRight, Check } from "./icons";
+
+export function NewsletterForm({
+  variant = "light",
+}: {
+  variant?: "light" | "dark";
+}) {
+  const [email, setEmail] = useState("");
+  const [done, setDone] = useState(false);
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setDone(true);
+  };
+
+  const dark = variant === "dark";
+
+  if (done) {
+    return (
+      <p
+        className={`flex items-center gap-2 text-sm font-medium ${
+          dark ? "text-sage-soft" : "text-sage-deep"
+        }`}
+      >
+        <Check className="h-4 w-4" />
+        Je bent erbij. Check je inbox voor je kortingscode.
+      </p>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={onSubmit}
+      className={`flex items-center gap-2 rounded-full p-1.5 ${
+        dark
+          ? "bg-cream/10 ring-1 ring-cream/15"
+          : "bg-white ring-1 ring-charcoal/10"
+      }`}
+    >
+      <input
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Je e-mailadres"
+        aria-label="E-mailadres"
+        className={`min-w-0 flex-1 bg-transparent px-4 py-2 text-sm outline-none placeholder:text-current/50 ${
+          dark ? "text-cream placeholder:text-cream/40" : "text-charcoal"
+        }`}
+      />
+      <button
+        type="submit"
+        aria-label="Inschrijven"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange text-white shadow-[0_8px_18px_-8px_rgba(224,124,58,0.8)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange-deep active:translate-y-0"
+      >
+        <ArrowRight className="h-5 w-5" />
+      </button>
+    </form>
+  );
+}
