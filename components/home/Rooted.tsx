@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
-import { Orb } from "@/components/ui/Orb";
+import { Splatter } from "@/components/ui/Splatter";
 import { IconBadge, type BadgeTone } from "@/components/ui/IconBadge";
 import { Heart, Check, Drop, Recycle, Globe, Sparkle } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
@@ -75,11 +75,12 @@ export function Rooted() {
             <div className="absolute inset-0 bg-charcoal/55" />
           </>
         )}
-        <Orb
-          tone="cream"
-          spin
-          opacity={0.07}
-          className="-right-28 -top-28 h-[420px] w-[420px]"
+        <Splatter
+          seed={31}
+          color="var(--color-cream)"
+          opacity={0.055}
+          arms={8}
+          className="-right-32 -top-32 h-[520px] w-[520px]"
         />
 
         <div className="relative">
@@ -115,11 +116,12 @@ export function Rooted() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="relative order-1 mx-auto flex h-[280px] w-[175px] items-center justify-center lg:order-2 lg:h-[380px] lg:w-[230px]"
             >
-              <Orb
-                tone="sunset"
-                breathe
-                opacity={0.32}
-                className="bottom-[10%] left-1/2 h-[260px] w-[260px] -translate-x-1/2 lg:h-[340px] lg:w-[340px]"
+              <Splatter
+                seed={52}
+                color="var(--color-cranberry)"
+                opacity={0.42}
+                arms={8}
+                className="bottom-[2%] left-1/2 h-[330px] w-[330px] -translate-x-1/2 lg:h-[420px] lg:w-[420px]"
               />
               <Image
                 src={asset("/images/can-cranberry.png")}

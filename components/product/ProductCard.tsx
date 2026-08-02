@@ -5,25 +5,29 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
 import { Plus } from "@/components/ui/icons";
-import { Orb } from "@/components/ui/Orb";
+import { Splatter } from "@/components/ui/Splatter";
 import { pricePerCan, type Product } from "@/lib/products";
 import { asset } from "@/lib/asset";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const soon = !product.available;
-  const orbTone = product.theme === "sage" ? "sage" : "sunset";
+  // Stable per product so a card keeps its splat shape between renders.
+  const seed =
+    [...product.slug].reduce((n, c) => n + c.charCodeAt(0), 0) % 97;
 
   const media = (
     <div
       className="relative flex aspect-[4/5] items-center justify-center overflow-hidden"
       style={{ backgroundColor: product.accentSoft }}
     >
-      {/* Signature orb behind the can */}
-      <Orb
-        tone={orbTone}
+      {/* The flavour thrown behind the can */}
+      <Splatter
+        seed={seed}
+        color={product.accent}
         opacity={0.55}
-        className="bottom-[8%] left-1/2 h-[64%] w-[64%] -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+        arms={5}
+        className="bottom-[-4%] left-1/2 h-[118%] w-[118%] -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
       />
 
       {/* Badge */}

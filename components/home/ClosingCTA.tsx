@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { ArrowRight, Truck, Recycle, Heart } from "@/components/ui/icons";
-import { Orb } from "@/components/ui/Orb";
+import { Splatter } from "@/components/ui/Splatter";
 import { asset } from "@/lib/asset";
 
 const perks = [
@@ -16,19 +16,19 @@ export function ClosingCTA() {
   return (
     <section className="container-px mx-auto max-w-7xl py-20 lg:py-28">
       <div className="relative overflow-hidden rounded-[2.5rem] bg-charcoal px-6 py-16 text-cream sm:px-12 lg:px-16 lg:py-20">
-        <div
-          className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full opacity-40 blur-[10px]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(224,124,58,0.55), transparent 65%)",
-          }}
+        <Splatter
+          seed={64}
+          color="var(--color-orange)"
+          opacity={0.22}
+          arms={9}
+          className="-right-28 -top-32 h-[520px] w-[520px]"
         />
-        {/* Orb watermark for continuity in the dark section */}
-        <Orb
-          tone="cream"
-          spin
-          opacity={0.07}
-          className="-bottom-28 -left-20 h-[380px] w-[380px]"
+        <Splatter
+          seed={5}
+          color="var(--color-cream)"
+          opacity={0.05}
+          arms={7}
+          className="-bottom-32 -left-24 h-[440px] w-[440px]"
         />
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>

@@ -2,7 +2,7 @@ import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ArrowRight } from "@/components/ui/icons";
-import { Orb } from "@/components/ui/Orb";
+import { Splatter } from "@/components/ui/Splatter";
 import { products } from "@/lib/products";
 
 export function ShopPreview() {
@@ -12,11 +12,12 @@ export function ShopPreview() {
       className="container-px relative mx-auto max-w-7xl py-20 lg:py-28"
     >
       <div className="relative flex flex-col items-center text-center">
-        <Orb
-          tone="sunset"
-          spin
-          opacity={0.1}
-          className="left-1/2 top-[-70px] h-[240px] w-[240px] -translate-x-1/2"
+        <Splatter
+          seed={17}
+          color="var(--color-orange)"
+          opacity={0.12}
+          arms={8}
+          className="left-1/2 top-[-90px] h-[300px] w-[300px] -translate-x-1/2"
         />
         <Reveal>
           <p className="eyebrow text-cranberry">Shop</p>
