@@ -10,8 +10,12 @@
  * the turbulence is turned right down — just enough to break the machine
  * perfection, not enough to chew the roundness off.
  *
- * Every shape is filled with a gradient and carries a wet highlight, because a
- * flat fill is what made these look dull however far the opacity was pushed.
+ * Water is thin and see-through, and the thing that actually sells it is the
+ * bright rim: light refracts at the edge of a sheet of liquid, so the boundary
+ * is lighter than the body. That rim is generated in the filter — erode the
+ * shape, subtract it from itself, flood the difference white — rather than
+ * drawn, so it follows whatever silhouette the geometry happens to produce.
+ * The body sits at partial opacity underneath so the ground reads through it.
  *
  *   splash  — a drop impact: whipping arms and flung droplets. The default.
  *   ribbon  — a thick arc of liquid, mid-pour.
@@ -69,7 +73,7 @@ function tendril(
     out.push({
       cx: mt * mt * 100 + 2 * mt * t * x1 + t * t * x2,
       cy: mt * mt * 100 + 2 * mt * t * y1 + t * t * y2,
-      r: Math.max(width * (1 - t * 0.8), 0.9),
+      r: Math.max(width * (1 - t * 0.7), 0.7),
     });
   }
   // The droplet has let go of the tip
@@ -79,7 +83,7 @@ function tendril(
 }
 
 function splashSource(seed: number, arms: number): Part[] {
-  const parts: Part[] = [{ cx: 100, cy: 100, r: 25 }];
+  const parts: Part[] = [{ cx: 100, cy: 100, r: 17 }];
   // A few fat lobes so the crown isn't a perfect circle
   for (let i = 0; i < 3; i++) {
     const a = noise(seed, i + 5) * TAU;
@@ -87,19 +91,19 @@ function splashSource(seed: number, arms: number): Part[] {
     parts.push({
       cx: 100 + Math.cos(a) * d,
       cy: 100 + Math.sin(a) * d,
-      r: 14 + 8 * noise(seed, i + 25),
+      r: 9 + 6 * noise(seed, i + 25),
     });
   }
 
   const n = Math.max(5, arms);
   for (let i = 0; i < n; i++) {
     const a = (i / n) * TAU + noise(seed, i) * 0.8;
-    const len = 34 + 44 * noise(seed, i + 40);
+    const len = 42 + 48 * noise(seed, i + 40);
     // Alternating whip direction: all bending the same way reads as a pinwheel
     const bend =
       (noise(seed, i + 45) < 0.5 ? -1 : 1) * (10 + 24 * noise(seed, i + 50));
-    const width = 5.5 + 6 * noise(seed, i + 80);
-    const bead = 2.5 + 6 * noise(seed, i + 160);
+    const width = 4 + 5 * noise(seed, i + 80);
+    const bead = 2 + 5 * noise(seed, i + 160);
     parts.push(...tendril(a, len, bend, width, bead));
   }
 
@@ -127,7 +131,7 @@ function ribbonSource(seed: number, arms: number): Part[] {
     const t = s / steps;
     const a = tilt + sweep * (t - 0.5);
     // Swell in the middle, taper to nothing at both ends
-    const w = 3 + 12 * Math.sin(Math.PI * t) * (0.7 + 0.5 * noise(seed, s + 20));
+    const w = 2 + 8 * Math.sin(Math.PI * t) * (0.7 + 0.5 * noise(seed, s + 20));
     parts.push({
       cx: 100 + Math.cos(a) * radius,
       cy: 100 + Math.sin(a) * radius,
@@ -170,13 +174,13 @@ function spraySource(seed: number, arms: number): Part[] {
 function dripSource(seed: number, arms: number): Part[] {
   const parts: Part[] = [];
   for (let i = 0; i < 7; i++) {
-    parts.push({ cx: 52 + i * 16, cy: 84 + noise(seed, i) * 10, r: 22 });
+    parts.push({ cx: 52 + i * 16, cy: 88 + noise(seed, i) * 8, r: 16 });
   }
   const n = Math.max(3, Math.round(arms / 2));
   for (let i = 0; i < n; i++) {
     const x = 58 + (84 / Math.max(1, n - 1)) * i + noise(seed, i) * 10;
     const len = 26 + 58 * noise(seed, i + 30);
-    const w = 3.5 + 5 * noise(seed, i + 60);
+    const w = 2.4 + 3.6 * noise(seed, i + 60);
     for (let s = 0; s <= 15; s++) {
       const t = s / 15;
       parts.push({ cx: x, cy: 96 + len * t, r: w * (1 - t * 0.25) });
@@ -250,7 +254,18 @@ export function Splatter({
             scale={t.scale}
             xChannelSelector="R"
             yChannelSelector="G"
+            result="body"
           />
+          {/* Refraction rim: the shape minus an eroded copy of itself */}
+          {/* Small: a wider erode eats a thin ligament whole and leaves only rim */}
+          <feMorphology operator="erode" radius="0.9" in="body" result="core" />
+          <feComposite operator="out" in="body" in2="core" result="edge" />
+          <feFlood floodColor="#ffffff" floodOpacity="0.7" result="lit" />
+          <feComposite operator="in" in="lit" in2="edge" result="rim" />
+          <feMerge>
+            <feMergeNode in="body" />
+            <feMergeNode in="rim" />
+          </feMerge>
         </filter>
         {/*
           Depth — a flat fill is what read as dull however high the opacity.
@@ -293,7 +308,7 @@ export function Splatter({
       </defs>
 
       <g opacity={opacity} filter={`url(#f-${uid})`}>
-        <g fill={`url(#g-${uid})`}>
+        <g fill={`url(#g-${uid})`} fillOpacity="0.72">
           {parts.map((p, i) => (
             <circle key={i} cx={p.cx} cy={p.cy} r={p.r} />
           ))}
