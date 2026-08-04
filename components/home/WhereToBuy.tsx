@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
-import { Splatter } from "@/components/ui/Splatter";
 import { Parallax } from "@/components/ui/Parallax";
+import { Botanical } from "@/components/ui/Botanical";
 import { ArrowRight, Pin } from "@/components/ui/icons";
 import { retailerCount, cityCount } from "@/lib/retailers";
 
@@ -27,30 +27,9 @@ export function WhereToBuy() {
           backgroundSize: "26px 26px",
         }}
       />
-      <Parallax distance={56} className="pointer-events-none absolute inset-0">
-        <Splatter
-          seed={39}
-          color="var(--color-orange)"
-          opacity={0.36}
-          arms={10}
-          className="-right-[8%] -top-[40%] h-[520px] w-[520px]"
-        />
-        <Splatter
-          seed={61}
-          variant="splash"
-          color="var(--color-cranberry)"
-          opacity={0.34}
-          arms={7}
-          className="-bottom-[52%] left-[6%] h-[460px] w-[460px]"
-        />
-        <Splatter
-          seed={28}
-          variant="spray"
-          color="var(--color-orange)"
-          opacity={0.45}
-          arms={8}
-          className="left-[34%] top-[-18%] h-[280px] w-[280px]"
-        />
+      <Parallax distance={56} className="pointer-events-none absolute inset-0 text-cream">
+        <Botanical motif="leaf" rotate={-18} className="-right-4 -top-6 h-40 w-40 opacity-[0.1] lg:h-52 lg:w-52" />
+        <Botanical motif="citrus" rotate={14} className="-bottom-8 left-[8%] h-32 w-32 opacity-[0.08] lg:h-40 lg:w-40" />
       </Parallax>
       <div
         aria-hidden

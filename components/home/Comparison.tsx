@@ -1,8 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
-import { Splatter } from "@/components/ui/Splatter";
 import { Parallax } from "@/components/ui/Parallax";
-import { DripEdge } from "@/components/ui/DripEdge";
+import { Botanical } from "@/components/ui/Botanical";
 import { Check, Close, ArrowRight } from "@/components/ui/icons";
 
 const rows = [
@@ -19,30 +18,10 @@ export function Comparison() {
       {/* The section itself can't clip — the drips run out of its bottom edge —
           so the background paint gets its own clipped layer. */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <Parallax distance={80} className="absolute inset-0">
-        <Splatter
-          seed={12}
-          color="var(--color-cranberry)"
-          opacity={0.3}
-          arms={10}
-          className="-left-[12%] -top-[18%] h-[620px] w-[620px]"
-        />
-        <Splatter
-          seed={73}
-          variant="splash"
-          color="var(--color-orange)"
-          opacity={0.22}
-          arms={8}
-          className="-bottom-[26%] right-[2%] h-[520px] w-[520px]"
-        />
-        <Splatter
-          seed={91}
-          variant="spray"
-          color="var(--color-cream)"
-          opacity={0.18}
-          arms={8}
-          className="left-[38%] top-[6%] h-[300px] w-[300px]"
-        />
+      <Parallax distance={80} className="absolute inset-0 text-cream">
+        <Botanical motif="citrus" rotate={-12} className="-left-10 top-10 h-48 w-48 opacity-[0.09] lg:h-64 lg:w-64" />
+        <Botanical motif="ginger" rotate={18} className="bottom-16 right-[6%] h-36 w-36 opacity-[0.08] lg:h-48 lg:w-48" />
+        <Botanical motif="bubbles" className="left-[44%] top-[6%] h-24 w-24 opacity-[0.07]" />
       </Parallax>
       </div>
 
@@ -191,7 +170,6 @@ export function Comparison() {
         </div>
       </div>
 
-      <DripEdge color="var(--color-charcoal)" seed={140} />
     </section>
   );
 }

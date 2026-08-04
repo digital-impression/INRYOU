@@ -3,8 +3,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { ArrowRight, Truck, Recycle, Heart } from "@/components/ui/icons";
-import { Splatter } from "@/components/ui/Splatter";
 import { Parallax } from "@/components/ui/Parallax";
+import { Botanical } from "@/components/ui/Botanical";
 import { asset } from "@/lib/asset";
 
 const perks = [
@@ -17,22 +17,9 @@ export function ClosingCTA() {
   return (
     <section className="container-px mx-auto max-w-7xl py-20 lg:py-28">
       <div className="relative overflow-hidden rounded-[2.5rem] bg-charcoal px-6 py-16 text-cream sm:px-12 lg:px-16 lg:py-20">
-        <Parallax distance={70} className="pointer-events-none absolute inset-0">
-        <Splatter
-          seed={64}
-          variant="splash"
-          color="var(--color-orange)"
-          opacity={0.36}
-          arms={9}
-          className="-right-28 -top-36 h-[580px] w-[580px]"
-        />
-        <Splatter
-          seed={5}
-          color="var(--color-cream)"
-          opacity={0.1}
-          arms={9}
-          className="-bottom-32 -left-24 h-[440px] w-[440px]"
-        />
+        <Parallax distance={70} className="pointer-events-none absolute inset-0 text-cream">
+          <Botanical motif="citrus" rotate={-10} className="-right-10 -top-12 h-52 w-52 opacity-[0.11] lg:h-64 lg:w-64" />
+          <Botanical motif="berry" rotate={20} className="-bottom-10 left-6 h-36 w-36 opacity-[0.08] lg:h-44 lg:w-44" />
         </Parallax>
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>

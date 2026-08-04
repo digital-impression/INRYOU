@@ -1,15 +1,15 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stars } from "@/components/ui/Stars";
-import { Splatter } from "@/components/ui/Splatter";
 import { Parallax } from "@/components/ui/Parallax";
+import { Botanical, flavourMotifs } from "@/components/ui/Botanical";
 import { Quote } from "@/components/ui/icons";
 import { reviews } from "@/lib/reviews";
 import { asset } from "@/lib/asset";
 
 const flavorStyle: Record<
   string,
-  { card: string; avatar: string; pill: string; field: string; paint: string; can: string | null }
+  { card: string; avatar: string; pill: string; field: string; paint: string; theme: string; can: string | null }
 > = {
   Cranberry: {
     card: "bg-cranberry-soft/50",
@@ -17,6 +17,7 @@ const flavorStyle: Record<
     pill: "bg-cranberry/10 text-cranberry-deep",
     field: "bg-cranberry-soft",
     paint: "var(--color-cranberry)",
+    theme: "cranberry",
     can: "/images/can-cranberry.png",
   },
   "Ginger & Citrus": {
@@ -25,6 +26,7 @@ const flavorStyle: Record<
     pill: "bg-orange/10 text-orange-deep",
     field: "bg-orange-soft",
     paint: "var(--color-orange)",
+    theme: "ginger",
     can: "/images/can-ginger-citrus.png",
   },
   "Kweepeer & Vanille": {
@@ -33,6 +35,7 @@ const flavorStyle: Record<
     pill: "bg-sage-deep/10 text-sage-deep",
     field: "bg-sage-soft",
     paint: "var(--color-sage-deep)",
+    theme: "sage",
     can: null,
   },
 };
@@ -50,6 +53,7 @@ export function Testimonials() {
   const [featured, ...rest] = reviews;
   const fs = (f: string) => flavorStyle[f] ?? flavorStyle["Cranberry"];
   const hero = fs(featured.flavor);
+  const heroMotifs = flavourMotifs[hero.theme] ?? flavourMotifs.neutral;
 
   return (
     <section className="bg-cream-deep">
@@ -92,14 +96,13 @@ export function Testimonials() {
               <div
                 className={`relative flex min-h-[300px] items-center justify-center overflow-hidden lg:min-h-[380px] ${hero.field}`}
               >
-                <Splatter
-                  seed={44}
-                  variant="splash"
-                  color={hero.paint}
-                  opacity={0.58}
-                  arms={8}
-                  className="left-1/2 top-1/2 h-[128%] w-[128%] -translate-x-1/2 -translate-y-1/2"
-                />
+                <span
+                  className="pointer-events-none absolute inset-0"
+                  style={{ color: hero.paint }}
+                >
+                  <Botanical motif={heroMotifs[0]} rotate={-16} className="left-[8%] top-[14%] h-24 w-24 opacity-30" />
+                  <Botanical motif={heroMotifs[1]} rotate={22} className="bottom-[12%] right-[10%] h-20 w-20 opacity-25" />
+                </span>
                 {hero.can && (
                   <Parallax distance={-22} className="relative">
                     <Image

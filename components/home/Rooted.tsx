@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
-import { Splatter } from "@/components/ui/Splatter";
 import { Parallax } from "@/components/ui/Parallax";
+import { Botanical } from "@/components/ui/Botanical";
 import { IconBadge, type BadgeTone } from "@/components/ui/IconBadge";
 import { Heart, Check, Drop, Recycle, Globe, Sparkle } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
@@ -76,14 +76,9 @@ export function Rooted() {
             <div className="absolute inset-0 bg-charcoal/55" />
           </>
         )}
-        <Parallax distance={64} className="pointer-events-none absolute inset-0">
-          <Splatter
-            seed={31}
-            color="var(--color-cream)"
-            opacity={0.1}
-            arms={10}
-            className="-right-32 -top-32 h-[520px] w-[520px]"
-          />
+        <Parallax distance={64} className="pointer-events-none absolute inset-0 text-cream">
+          <Botanical motif="berry" rotate={-16} className="-right-6 top-8 h-40 w-40 opacity-[0.1] lg:h-52 lg:w-52" />
+          <Botanical motif="leaf" rotate={24} className="bottom-6 left-4 h-32 w-32 opacity-[0.08] lg:h-40 lg:w-40" />
         </Parallax>
 
         <div className="relative">
@@ -119,14 +114,6 @@ export function Rooted() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="relative order-1 mx-auto flex h-[280px] w-[175px] items-center justify-center lg:order-2 lg:h-[380px] lg:w-[230px]"
             >
-              <Splatter
-                seed={52}
-                variant="splash"
-                color="var(--color-cranberry)"
-                opacity={0.62}
-                arms={9}
-                className="bottom-[-6%] left-1/2 h-[380px] w-[380px] -translate-x-1/2 lg:h-[480px] lg:w-[480px]"
-              />
               <Image
                 src={asset("/images/can-cranberry.png")}
                 alt="INRYOU Cranberry blik"

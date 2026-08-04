@@ -6,8 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
 import { Stars } from "@/components/ui/Stars";
 import { ArrowRight } from "@/components/ui/icons";
-import { Splatter } from "@/components/ui/Splatter";
 import { Parallax } from "@/components/ui/Parallax";
+import { Botanical, type Motif } from "@/components/ui/Botanical";
 import { asset } from "@/lib/asset";
 
 const fade = {
@@ -34,6 +34,7 @@ const flavors = [
     splash: null as string | null,
     paint: "#b23a4b",
     paintDeep: "#8b2836",
+    motifs: ["berry", "leaf", "bubbles"] as Motif[],
   },
   {
     name: "Ginger & Citrus",
@@ -42,6 +43,7 @@ const flavors = [
     splash: null as string | null,
     paint: "#e07c3a",
     paintDeep: "#b85a20",
+    motifs: ["ginger", "citrus", "bubbles"] as Motif[],
   },
 ];
 
@@ -81,30 +83,13 @@ export function Hero() {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <Parallax distance={70} className="absolute inset-0">
-            <Splatter
-              seed={41}
-              color={flavor.paint}
-              opacity={0.17}
-              arms={10}
-              className="-left-[26%] -top-[46%] h-[780px] w-[780px]"
-            />
-            <Splatter
-              seed={7}
-              variant="splash"
-              color={flavor.paintDeep}
-              opacity={0.18}
-              arms={8}
-              className="-bottom-[38%] left-[20%] h-[600px] w-[600px]"
-            />
-            <Splatter
-              seed={19}
-              variant="spray"
-              color={flavor.paint}
-              opacity={0.34}
-              arms={9}
-              className="left-[6%] top-[48%] h-[340px] w-[340px]"
-            />
+            <Parallax
+              distance={70}
+              className="absolute inset-0"
+              style={{ color: flavor.paint }}
+            >
+              <Botanical motif={flavor.motifs[0]} rotate={-14} className="left-[4%] top-[16%] h-24 w-24 opacity-[0.18] lg:h-32 lg:w-32" />
+              <Botanical motif={flavor.motifs[1]} rotate={22} className="bottom-[14%] left-[15%] h-20 w-20 opacity-[0.14] lg:h-24 lg:w-24" />
             </Parallax>
           </motion.div>
         </AnimatePresence>
@@ -202,37 +187,15 @@ export function Hero() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0"
             >
-              <Parallax distance={42} className="absolute inset-0">
-              <Splatter
-                seed={23}
-                variant="splash"
-                color={flavor.paint}
-                arms={9}
-                className="left-[46%] top-[48%] h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2"
-              />
-              <Splatter
-                seed={88}
-                color={flavor.paintDeep}
-                opacity={0.55}
-                arms={8}
-                className="left-[62%] top-[58%] h-[96%] w-[96%] -translate-x-1/2 -translate-y-1/2"
-              />
-              <Splatter
-                seed={35}
-                variant="ribbon"
-                color={flavor.paint}
-                opacity={0.55}
-                arms={6}
-                className="-left-[10%] top-[6%] h-[105%] w-[105%]"
-              />
-              <Splatter
-                seed={57}
-                variant="spray"
-                color={flavor.paint}
-                opacity={0.85}
-                arms={10}
-                className="-right-[6%] top-[16%] h-[300px] w-[300px]"
-              />
+              <Parallax
+                distance={42}
+                className="absolute inset-0"
+                style={{ color: flavor.paint }}
+              >
+                <Botanical motif={flavor.motifs[0]} rotate={-18} className="left-[1%] top-[20%] h-24 w-24 opacity-40 lg:h-28 lg:w-28" />
+                <Botanical motif={flavor.motifs[1]} rotate={16} className="right-[3%] top-[8%] h-20 w-20 opacity-35 lg:h-24 lg:w-24" />
+                <Botanical motif={flavor.motifs[2]} className="bottom-[18%] right-[8%] h-16 w-16 opacity-30 lg:h-20 lg:w-20" />
+                <Botanical motif={flavor.motifs[1]} rotate={-32} className="bottom-[4%] left-[12%] h-14 w-14 opacity-25" />
               </Parallax>
             </motion.div>
           </AnimatePresence>

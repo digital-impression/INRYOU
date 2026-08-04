@@ -5,31 +5,29 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
 import { Plus } from "@/components/ui/icons";
-import { Splatter } from "@/components/ui/Splatter";
+import { Botanical, flavourMotifs } from "@/components/ui/Botanical";
 import { pricePerCan, type Product } from "@/lib/products";
 import { asset } from "@/lib/asset";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const soon = !product.available;
-  // Stable per product so a card keeps its splat shape between renders.
-  const seed =
-    [...product.slug].reduce((n, c) => n + c.charCodeAt(0), 0) % 97;
+  const motifs = flavourMotifs[product.theme] ?? flavourMotifs.neutral;
 
   const media = (
     <div
       className="relative flex aspect-[4/5] items-center justify-center overflow-hidden"
       style={{ backgroundColor: product.accentSoft }}
     >
-      {/* The flavour thrown behind the can */}
-      <Splatter
-        seed={seed}
-        variant="splash"
-        color={product.accent}
-        opacity={0.68}
-        arms={8}
-        className="bottom-[-8%] left-1/2 h-[126%] w-[126%] -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-      />
+      {/* The flavour's own ingredients, behind the can */}
+      <span
+        className="pointer-events-none absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+        style={{ color: product.accent }}
+      >
+        <Botanical motif={motifs[0]} rotate={-16} className="left-[6%] top-[12%] h-20 w-20 opacity-30" />
+        <Botanical motif={motifs[1]} rotate={20} className="bottom-[14%] right-[6%] h-16 w-16 opacity-25" />
+        <Botanical motif="bubbles" className="right-[12%] top-[26%] h-12 w-12 opacity-20" />
+      </span>
 
       {/* Badge */}
       <span className="absolute left-4 top-4 z-10 rounded-full bg-charcoal/85 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream">

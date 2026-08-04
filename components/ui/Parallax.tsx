@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useRef, type CSSProperties, type ReactNode } from "react";
 import {
   motion,
   useReducedMotion,
@@ -20,10 +20,12 @@ import {
 export function Parallax({
   distance = 60,
   className = "",
+  style,
   children,
 }: {
   distance?: number;
   className?: string;
+  style?: CSSProperties;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -36,7 +38,7 @@ export function Parallax({
   const y = useSpring(raw, { stiffness: 90, damping: 24, mass: 0.4 });
 
   return (
-    <motion.div ref={ref} className={className} style={{ y: reduce ? 0 : y }}>
+    <motion.div ref={ref} className={className} style={{ ...style, y: reduce ? 0 : y }}>
       {children}
     </motion.div>
   );
