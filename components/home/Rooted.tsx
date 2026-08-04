@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
-import { Botanical } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { IconBadge, type BadgeTone } from "@/components/ui/IconBadge";
 import { Heart, Check, Drop, Recycle, Globe, Sparkle } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
@@ -77,8 +77,9 @@ export function Rooted() {
           </>
         )}
         <Parallax distance={64} className="pointer-events-none absolute inset-0 text-cream">
-          <Botanical motif="berry" rotate={-16} className="-right-6 top-8 h-40 w-40 opacity-[0.1] lg:h-52 lg:w-52" />
-          <Botanical motif="leaf" rotate={24} className="bottom-6 left-4 h-32 w-32 opacity-[0.08] lg:h-40 lg:w-40" />
+          <Splat variant="ripple" seed={31} className="-left-10 top-6 h-48 w-48 opacity-[0.1] lg:h-64 lg:w-64" />
+          <Splat variant="splash" seed={36} className="bottom-8 right-[5%] h-36 w-36 opacity-[0.09] lg:h-44 lg:w-44" />
+          <Splat variant="droplets" seed={44} className="left-[44%] top-[8%] h-24 w-24 opacity-[0.08]" />
         </Parallax>
 
         <div className="relative">

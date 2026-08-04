@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stars } from "@/components/ui/Stars";
 import { Parallax } from "@/components/ui/Parallax";
-import { Botanical, flavourMotifs } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { Quote } from "@/components/ui/icons";
 import { reviews } from "@/lib/reviews";
 import { asset } from "@/lib/asset";
@@ -53,7 +53,6 @@ export function Testimonials() {
   const [featured, ...rest] = reviews;
   const fs = (f: string) => flavorStyle[f] ?? flavorStyle["Cranberry"];
   const hero = fs(featured.flavor);
-  const heroMotifs = flavourMotifs[hero.theme] ?? flavourMotifs.neutral;
 
   return (
     <section className="bg-cream-deep">
@@ -100,8 +99,8 @@ export function Testimonials() {
                   className="pointer-events-none absolute inset-0"
                   style={{ color: hero.paint }}
                 >
-                  <Botanical motif={heroMotifs[0]} rotate={-16} className="left-[8%] top-[14%] h-24 w-24 opacity-30" />
-                  <Botanical motif={heroMotifs[1]} rotate={22} className="bottom-[12%] right-[10%] h-20 w-20 opacity-25" />
+                  <Splat variant="splash" seed={44} className="left-[7%] top-[12%] h-24 w-24 opacity-30" />
+                  <Splat variant="ripple" seed={58} className="bottom-[10%] right-[8%] h-20 w-20 opacity-25" />
                 </span>
                 {hero.can && (
                   <Parallax distance={-22} className="relative">

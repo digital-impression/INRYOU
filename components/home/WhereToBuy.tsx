@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
-import { Botanical } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { ArrowRight, Pin } from "@/components/ui/icons";
 import { retailerCount, cityCount } from "@/lib/retailers";
 
@@ -28,8 +28,9 @@ export function WhereToBuy() {
         }}
       />
       <Parallax distance={56} className="pointer-events-none absolute inset-0 text-cream">
-        <Botanical motif="leaf" rotate={-18} className="-right-4 -top-6 h-40 w-40 opacity-[0.1] lg:h-52 lg:w-52" />
-        <Botanical motif="citrus" rotate={14} className="-bottom-8 left-[8%] h-32 w-32 opacity-[0.08] lg:h-40 lg:w-40" />
+        <Splat variant="ripple" seed={39} className="-left-10 top-6 h-48 w-48 opacity-[0.1] lg:h-64 lg:w-64" />
+        <Splat variant="splash" seed={44} className="bottom-8 right-[5%] h-36 w-36 opacity-[0.09] lg:h-44 lg:w-44" />
+        <Splat variant="droplets" seed={52} className="left-[44%] top-[8%] h-24 w-24 opacity-[0.08]" />
       </Parallax>
       <div
         aria-hidden

@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Parallax } from "@/components/ui/Parallax";
-import { Botanical } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { Check, Close, ArrowRight } from "@/components/ui/icons";
 
 const rows = [
@@ -19,9 +19,9 @@ export function Comparison() {
           so the background paint gets its own clipped layer. */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <Parallax distance={80} className="absolute inset-0 text-cream">
-        <Botanical motif="citrus" rotate={-12} className="-left-10 top-10 h-48 w-48 opacity-[0.09] lg:h-64 lg:w-64" />
-        <Botanical motif="ginger" rotate={18} className="bottom-16 right-[6%] h-36 w-36 opacity-[0.08] lg:h-48 lg:w-48" />
-        <Botanical motif="bubbles" className="left-[44%] top-[6%] h-24 w-24 opacity-[0.07]" />
+        <Splat variant="ripple" seed={12} className="-left-10 top-6 h-48 w-48 opacity-[0.1] lg:h-64 lg:w-64" />
+        <Splat variant="splash" seed={17} className="bottom-8 right-[5%] h-36 w-36 opacity-[0.09] lg:h-44 lg:w-44" />
+        <Splat variant="droplets" seed={25} className="left-[44%] top-[8%] h-24 w-24 opacity-[0.08]" />
       </Parallax>
       </div>
 

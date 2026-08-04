@@ -5,28 +5,28 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
 import { Plus } from "@/components/ui/icons";
-import { Botanical, flavourMotifs } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { pricePerCan, type Product } from "@/lib/products";
 import { asset } from "@/lib/asset";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const soon = !product.available;
-  const motifs = flavourMotifs[product.theme] ?? flavourMotifs.neutral;
+  // Stable per product, so a card keeps its marks between renders.
+  const seed = [...product.slug].reduce((n, c) => n + c.charCodeAt(0), 0) % 89;
 
   const media = (
     <div
       className="relative flex aspect-[4/5] items-center justify-center overflow-hidden"
       style={{ backgroundColor: product.accentSoft }}
     >
-      {/* The flavour's own ingredients, behind the can */}
       <span
         className="pointer-events-none absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         style={{ color: product.accent }}
       >
-        <Botanical motif={motifs[0]} rotate={-16} className="left-[6%] top-[12%] h-20 w-20 opacity-30" />
-        <Botanical motif={motifs[1]} rotate={20} className="bottom-[14%] right-[6%] h-16 w-16 opacity-25" />
-        <Botanical motif="bubbles" className="right-[12%] top-[26%] h-12 w-12 opacity-20" />
+        <Splat variant="splash" seed={seed} className="left-[5%] top-[10%] h-24 w-24 opacity-35" />
+        <Splat variant="ripple" seed={seed + 7} className="bottom-[12%] right-[5%] h-20 w-20 opacity-30" />
+        <Splat variant="droplets" seed={seed + 19} className="right-[14%] top-[24%] h-14 w-14 opacity-25" />
       </span>
 
       {/* Badge */}

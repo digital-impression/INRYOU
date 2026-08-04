@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Stars } from "@/components/ui/Stars";
 import { ArrowRight } from "@/components/ui/icons";
 import { Parallax } from "@/components/ui/Parallax";
-import { Botanical, type Motif } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { asset } from "@/lib/asset";
 
 const fade = {
@@ -34,7 +34,6 @@ const flavors = [
     splash: null as string | null,
     paint: "#b23a4b",
     paintDeep: "#8b2836",
-    motifs: ["berry", "leaf", "bubbles"] as Motif[],
   },
   {
     name: "Ginger & Citrus",
@@ -43,7 +42,6 @@ const flavors = [
     splash: null as string | null,
     paint: "#e07c3a",
     paintDeep: "#b85a20",
-    motifs: ["ginger", "citrus", "bubbles"] as Motif[],
   },
 ];
 
@@ -88,8 +86,8 @@ export function Hero() {
               className="absolute inset-0"
               style={{ color: flavor.paint }}
             >
-              <Botanical motif={flavor.motifs[0]} rotate={-14} className="left-[4%] top-[16%] h-24 w-24 opacity-[0.18] lg:h-32 lg:w-32" />
-              <Botanical motif={flavor.motifs[1]} rotate={22} className="bottom-[14%] left-[15%] h-20 w-20 opacity-[0.14] lg:h-24 lg:w-24" />
+              <Splat variant="splash" seed={11} className="left-[3%] top-[14%] h-28 w-28 opacity-[0.2] lg:h-36 lg:w-36" />
+              <Splat variant="ripple" seed={27} className="bottom-[2%] left-[1%] h-24 w-24 opacity-[0.16] lg:h-32 lg:w-32" />
             </Parallax>
           </motion.div>
         </AnimatePresence>
@@ -192,10 +190,10 @@ export function Hero() {
                 className="absolute inset-0"
                 style={{ color: flavor.paint }}
               >
-                <Botanical motif={flavor.motifs[0]} rotate={-18} className="left-[1%] top-[20%] h-24 w-24 opacity-40 lg:h-28 lg:w-28" />
-                <Botanical motif={flavor.motifs[1]} rotate={16} className="right-[3%] top-[8%] h-20 w-20 opacity-35 lg:h-24 lg:w-24" />
-                <Botanical motif={flavor.motifs[2]} className="bottom-[18%] right-[8%] h-16 w-16 opacity-30 lg:h-20 lg:w-20" />
-                <Botanical motif={flavor.motifs[1]} rotate={-32} className="bottom-[4%] left-[12%] h-14 w-14 opacity-25" />
+                <Splat variant="splash" seed={43} className="left-0 top-[18%] h-28 w-28 opacity-45 lg:h-32 lg:w-32" />
+                <Splat variant="flick" seed={8} rotate={-20} className="right-[2%] top-[6%] h-24 w-24 opacity-40 lg:h-28 lg:w-28" />
+                <Splat variant="droplets" seed={61} className="bottom-[16%] right-[8%] h-20 w-20 opacity-35" />
+                <Splat variant="ripple" seed={5} className="bottom-[26%] left-[6%] h-20 w-20 opacity-30" />
               </Parallax>
             </motion.div>
           </AnimatePresence>

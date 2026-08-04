@@ -2,7 +2,7 @@ import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ArrowRight } from "@/components/ui/icons";
-import { Botanical } from "@/components/ui/Botanical";
+import { Splat } from "@/components/ui/Splash";
 import { products } from "@/lib/products";
 
 export function ShopPreview() {
@@ -12,8 +12,8 @@ export function ShopPreview() {
       className="container-px relative mx-auto max-w-7xl py-20 lg:py-28"
     >
       <div className="relative flex flex-col items-center text-center">
-        <Botanical motif="citrus" rotate={-14} className="left-[10%] top-[-46px] hidden h-24 w-24 text-orange opacity-25 sm:block" />
-        <Botanical motif="berry" rotate={18} className="right-[12%] top-[-36px] hidden h-20 w-20 text-cranberry opacity-20 sm:block" />
+        <Splat variant="flick" seed={22} rotate={-24} className="left-[10%] top-[-46px] hidden h-24 w-24 text-orange opacity-25 sm:block" />
+        <Splat variant="droplets" seed={9} className="right-[12%] top-[-36px] hidden h-20 w-20 text-cranberry opacity-20 sm:block" />
         <Reveal>
           <p className="eyebrow text-cranberry">Shop</p>
         </Reveal>
