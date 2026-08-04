@@ -86,8 +86,8 @@ export function Hero() {
               className="absolute inset-0"
               style={{ color: flavor.paint }}
             >
-              <Splat variant="splash" seed={11} className="left-[3%] top-[14%] h-28 w-28 opacity-[0.2] lg:h-36 lg:w-36" />
-              <Splat variant="ripple" seed={27} className="bottom-[2%] left-[1%] h-24 w-24 opacity-[0.16] lg:h-32 lg:w-32" />
+              <Splat seed={2} rotate={-12} className="left-[1%] top-[10%] h-40 w-40 opacity-[0.13] lg:h-56 lg:w-56" />
+              <Splat seed={5} flip className="bottom-[1%] left-[6%] h-28 w-28 opacity-[0.1] lg:h-40 lg:w-40" />
             </Parallax>
           </motion.div>
         </AnimatePresence>
@@ -190,10 +190,10 @@ export function Hero() {
                 className="absolute inset-0"
                 style={{ color: flavor.paint }}
               >
-                <Splat variant="splash" seed={43} className="left-0 top-[18%] h-28 w-28 opacity-45 lg:h-32 lg:w-32" />
-                <Splat variant="flick" seed={8} rotate={-20} className="right-[2%] top-[6%] h-24 w-24 opacity-40 lg:h-28 lg:w-28" />
-                <Splat variant="droplets" seed={61} className="bottom-[16%] right-[8%] h-20 w-20 opacity-35" />
-                <Splat variant="ripple" seed={5} className="bottom-[26%] left-[6%] h-20 w-20 opacity-30" />
+                <Splat seed={0} rotate={-8} className="-left-[6%] top-[12%] h-52 w-52 opacity-30 lg:h-72 lg:w-72" />
+                <Splat seed={4} rotate={18} flip className="-right-[4%] top-[4%] h-40 w-40 opacity-25 lg:h-52 lg:w-52" />
+                <Splat seed={6} className="bottom-[10%] right-[2%] h-32 w-32 opacity-22 lg:h-40 lg:w-40" />
+                
               </Parallax>
             </motion.div>
           </AnimatePresence>

@@ -99,8 +99,8 @@ export function Testimonials() {
                   className="pointer-events-none absolute inset-0"
                   style={{ color: hero.paint }}
                 >
-                  <Splat variant="splash" seed={44} className="left-[7%] top-[12%] h-24 w-24 opacity-30" />
-                  <Splat variant="ripple" seed={58} className="bottom-[10%] right-[8%] h-20 w-20 opacity-25" />
+                  <Splat seed={2} rotate={-8} className="-left-[8%] top-[4%] h-[72%] w-[72%] opacity-25" />
+                  <Splat seed={6} flip className="bottom-[2%] right-[-6%] h-[58%] w-[58%] opacity-[0.18]" />
                 </span>
                 {hero.can && (
                   <Parallax distance={-22} className="relative">

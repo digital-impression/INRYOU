@@ -12,8 +12,8 @@ export function ShopPreview() {
       className="container-px relative mx-auto max-w-7xl py-20 lg:py-28"
     >
       <div className="relative flex flex-col items-center text-center">
-        <Splat variant="flick" seed={22} rotate={-24} className="left-[10%] top-[-46px] hidden h-24 w-24 text-orange opacity-25 sm:block" />
-        <Splat variant="droplets" seed={9} className="right-[12%] top-[-36px] hidden h-20 w-20 text-cranberry opacity-20 sm:block" />
+        <Splat seed={5} rotate={-16} className="left-[6%] top-[-70px] hidden h-40 w-40 text-orange opacity-[0.18] sm:block" />
+        <Splat seed={1} flip className="right-[8%] top-[-56px] hidden h-32 w-32 text-cranberry opacity-[0.15] sm:block" />
         <Reveal>
           <p className="eyebrow text-cranberry">Shop</p>
         </Reveal>

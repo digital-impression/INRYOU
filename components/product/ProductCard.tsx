@@ -24,9 +24,9 @@ export function ProductCard({ product }: { product: Product }) {
         className="pointer-events-none absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         style={{ color: product.accent }}
       >
-        <Splat variant="splash" seed={seed} className="left-[5%] top-[10%] h-24 w-24 opacity-35" />
-        <Splat variant="ripple" seed={seed + 7} className="bottom-[12%] right-[5%] h-20 w-20 opacity-30" />
-        <Splat variant="droplets" seed={seed + 19} className="right-[14%] top-[24%] h-14 w-14 opacity-25" />
+        <Splat seed={seed} rotate={-10} className="left-[-8%] top-[2%] h-[70%] w-[70%] opacity-30" />
+        <Splat seed={seed + 3} flip rotate={14} className="bottom-[2%] right-[-6%] h-[58%] w-[58%] opacity-22" />
+        
       </span>
 
       {/* Badge */}

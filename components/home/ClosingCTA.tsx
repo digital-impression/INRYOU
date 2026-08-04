@@ -18,9 +18,8 @@ export function ClosingCTA() {
     <section className="container-px mx-auto max-w-7xl py-20 lg:py-28">
       <div className="relative overflow-hidden rounded-[2.5rem] bg-charcoal px-6 py-16 text-cream sm:px-12 lg:px-16 lg:py-20">
         <Parallax distance={70} className="pointer-events-none absolute inset-0 text-cream">
-          <Splat variant="ripple" seed={64} className="-left-10 top-6 h-48 w-48 opacity-[0.1] lg:h-64 lg:w-64" />
-          <Splat variant="splash" seed={69} className="bottom-8 right-[5%] h-36 w-36 opacity-[0.09] lg:h-44 lg:w-44" />
-          <Splat variant="droplets" seed={77} className="left-[44%] top-[8%] h-24 w-24 opacity-[0.08]" />
+          <Splat seed={3} rotate={-10} className="-left-16 -top-10 h-72 w-72 opacity-[0.07] lg:h-96 lg:w-96" />
+          <Splat seed={7} flip className="-bottom-12 right-[3%] h-64 w-64 opacity-[0.06] lg:h-80 lg:w-80" />
         </Parallax>
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
