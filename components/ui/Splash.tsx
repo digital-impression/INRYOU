@@ -30,7 +30,9 @@ export function Splat({
   className?: string;
 }) {
   const src = asset(`/images/splash/splash-${(Math.abs(seed) % COUNT) + 1}.png`);
-  const mask = `url("${src}") center / contain no-repeat`;
+  // Unquoted on purpose: React escapes the quotes to &quot; inside the style
+  // attribute, which defeats any tooling that rewrites asset paths in the HTML.
+  const mask = `url(${src}) center / contain no-repeat`;
 
   return (
     <span
