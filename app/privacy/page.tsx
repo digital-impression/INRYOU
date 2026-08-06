@@ -18,7 +18,7 @@ export default function PrivacyPage() {
         {
           heading: "Wat we verzamelen",
           paragraphs: [
-            "Wanneer je een bestelling plaatst of je inschrijft voor onze nieuwsbrief, verzamelen we de gegevens die je opgeeft — zoals je naam, e-mailadres, leveringsadres en bestelgegevens — samen met basale, geanonimiseerde analytics over hoe onze site gebruikt wordt.",
+            "Wanneer je een bestelling plaatst of je inschrijft voor onze nieuwsbrief, verzamelen we de gegevens die je opgeeft, zoals je naam, e-mailadres, leveringsadres en bestelgegevens, samen met basale, geanonimiseerde analytics over hoe onze site gebruikt wordt.",
           ],
         },
         {

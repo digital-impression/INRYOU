@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Neem contact op met het INRYOU-team. We zijn echt, menselijk en snel met antwoorden — vragen, groothandel, pers en alles daartussenin.",
+    "Neem contact op met het INRYOU-team. We zijn echt, menselijk en snel met antwoorden, vragen, groothandel, pers en alles daartussenin.",
 };
 
 const channels = [
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <Reveal delay={2}>
             <p className="mt-5 max-w-md text-pretty text-lg text-ink">
               Of het nu gaat om een vraag over een bestelling, een idee voor een
-              smaak, of een winkel die ons wil verkopen — we horen graag van je.
+              smaak, of een winkel die ons wil verkopen, we horen graag van je.
             </p>
           </Reveal>
           <Reveal delay={3}>

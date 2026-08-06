@@ -40,7 +40,7 @@ export const products: Product[] = [
     shortDescription:
       "Fris, lichtzuur en verkwikkend. Cranberry met een functionele kern voor heldere focus.",
     description:
-      "Een verfijnde, volwassen kijk op cranberry — lichtzure vruchten in balans met zachte mineraliteit en amper zoetheid. Elke slok is helder en droog: verfrissing die doordacht aanvoelt in plaats van luid. Functionele elektrolyten werken rustig op de achtergrond om je de hele dag in balans te houden.",
+      "Een verfijnde, volwassen kijk op cranberry, lichtzure vruchten in balans met zachte mineraliteit en amper zoetheid. Elke slok is helder en droog: verfrissing die doordacht aanvoelt in plaats van luid. Functionele elektrolyten werken rustig op de achtergrond om je de hele dag in balans te houden.",
     price: 30,
     comparePrice: 36,
     packSize: 12,
@@ -58,7 +58,7 @@ export const products: Product[] = [
       {
         title: "Rijk aan antioxidanten",
         description:
-          "Echte cranberry brengt van nature aanwezige polyfenolen — kleur en karakter, geen concentraat.",
+          "Echte cranberry brengt van nature aanwezige polyfenolen, kleur en karakter, geen concentraat.",
       },
       {
         title: "Elektrolytenbalans",
@@ -97,7 +97,7 @@ export const products: Product[] = [
     shortDescription:
       "Pittige gember ontmoet heldere citrus. Een warme, levendige boost zonder de crash.",
     description:
-      "Een zachte pit van echte gember, opgetild door heldere citrusoliën. Verkwikkend zonder scherp te zijn — een drank die je smaakpapillen wekt en tegelijk je maag tot rust brengt. Lichte koolzuur draagt de aroma's; functionele mineralen houden de ervaring geaard en in balans.",
+      "Een zachte pit van echte gember, opgetild door heldere citrusoliën. Verkwikkend zonder scherp te zijn, een drank die je smaakpapillen wekt en tegelijk je maag tot rust brengt. Lichte koolzuur draagt de aroma's; functionele mineralen houden de ervaring geaard en in balans.",
     price: 30,
     comparePrice: 36,
     packSize: 12,
@@ -153,9 +153,9 @@ export const products: Product[] = [
     badge: "Calm",
     tagline: "Zacht, bloemig, rustig verwennend.",
     shortDescription:
-      "Zachte kweepeer en romige vanille. Onze rustigste smaak — binnenkort.",
+      "Zachte kweepeer en romige vanille. Onze rustigste smaak, binnenkort.",
     description:
-      "De meest ingetogen van de drie — boomgaardkwee, subtiel bloemig, verzacht door een draadje echte vanille. Rond en zacht, een bruisend water voor het moment waarop je iets wil dat als een traktatie voelt maar als water drinkt. Mineralen en adaptogene rust, stilletjes samengesteld.",
+      "De meest ingetogen van de drie, boomgaardkwee, subtiel bloemig, verzacht door een draadje echte vanille. Rond en zacht, een bruisend water voor het moment waarop je iets wil dat als een traktatie voelt maar als water drinkt. Mineralen en adaptogene rust, stilletjes samengesteld.",
     price: 30,
     comparePrice: 36,
     packSize: 12,
@@ -172,7 +172,7 @@ export const products: Product[] = [
       {
         title: "Rust in een blik",
         description:
-          "Een vleugje L-theanine voor ontspannen focus — kom tot rust zonder te vertragen.",
+          "Een vleugje L-theanine voor ontspannen focus, kom tot rust zonder te vertragen.",
       },
       {
         title: "Van nature rond",
@@ -210,7 +210,7 @@ export const bundle = {
   name: "Het Proefpakket",
   tagline: "Beide smaken, één moeiteloze doos.",
   description:
-    "Kan je niet kiezen? Begin hier. Een mix van onze twee beschikbare smaken zodat je jouw balans vindt — zes van elk, twaalf in totaal.",
+    "Kan je niet kiezen? Begin hier. Een mix van onze twee beschikbare smaken zodat je jouw balans vindt, zes van elk, twaalf in totaal.",
   price: 30,
   comparePrice: 36,
   packSize: 12,

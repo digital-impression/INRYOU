@@ -13,7 +13,7 @@ export function Logo({
   return (
     <Link
       href="/"
-      aria-label="INRYOU — home"
+      aria-label="INRYOU, naar de homepagina"
       className={`group inline-flex flex-col leading-none ${className}`}
     >
       <span

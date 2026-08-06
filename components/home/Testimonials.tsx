@@ -141,7 +141,7 @@ export function Testimonials() {
             </div>
           </Reveal>
 
-          {/* Rest — masonry, uneven heights */}
+          {/* Rest, masonry, uneven heights */}
           <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6 [&>*]:break-inside-avoid">
             {rest.map((r) => (
               <Reveal key={r.name + r.title} as="div">

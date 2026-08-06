@@ -27,7 +27,7 @@ export async function generateMetadata({
   const product = getProduct(slug);
   if (!product) return { title: "Niet gevonden" };
   return {
-    title: `${product.name} — ${product.tagline}`,
+    title: `${product.name} · ${product.tagline}`,
     description: product.shortDescription,
     openGraph: {
       title: `INRYOU ${product.name}`,
@@ -40,19 +40,19 @@ export async function generateMetadata({
 const faqs = [
   {
     q: "Hoeveel suiker zit er in een blik?",
-    a: "Minder dan 2g per blik — een fractie van de 25–40g in een klassieke frisdrank. De zoetheid komt van echt fruit en een vleugje steviablad, nooit van geraffineerde suiker of kunstmatige zoetstoffen.",
+    a: "Minder dan 2g per blik, een fractie van de 25–40g in een klassieke frisdrank. De zoetheid komt van echt fruit en een vleugje steviablad, nooit van geraffineerde suiker of kunstmatige zoetstoffen.",
   },
   {
     q: "Waarvoor dienen de functionele mineralen?",
-    a: "Elk blik bevat een afgemeten dosis magnesium en kalium — elektrolyten die een normale spier- en zenuwfunctie en je dagelijkse hydratatie ondersteunen. We gebruiken citraatvormen voor een betere opname.",
+    a: "Elk blik bevat een afgemeten dosis magnesium en kalium, elektrolyten die een normale spier- en zenuwfunctie en je dagelijkse hydratatie ondersteunen. We gebruiken citraatvormen voor een betere opname.",
   },
   {
     q: "Is het geschikt om dagelijks te drinken?",
-    a: "Absoluut — daar is het net voor gemaakt. Het is een zuivere, suikerarme, caloriearme drank die frisdrank in je dagelijkse routine vervangt zonder in te boeten op smaak.",
+    a: "Absoluut, daar is het net voor gemaakt. Het is een zuivere, suikerarme, caloriearme drank die frisdrank in je dagelijkse routine vervangt zonder in te boeten op smaak.",
   },
   {
     q: "Hoe werkt het abonnement?",
-    a: "Kies voor Abonneer & bespaar en krijg 15% korting en gratis levering bij elke bestelling, elke vier weken bezorgd. Jij houdt de controle — pauzeer, sla een levering over, wissel van smaak of annuleer wanneer je wil.",
+    a: "Kies voor Abonneer & bespaar en krijg 15% korting en gratis levering bij elke bestelling, elke vier weken bezorgd. Jij houdt de controle, pauzeer, sla een levering over, wissel van smaak of annuleer wanneer je wil.",
   },
 ];
 

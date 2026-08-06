@@ -7,7 +7,7 @@ import { ArrowRight } from "@/components/ui/icons";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Alles wat je moet weten over INRYOU — ingrediënten, voeding, abonnementen, levering en retour.",
+    "Alles wat je moet weten over INRYOU, ingrediënten, voeding, abonnementen, levering en retour.",
 };
 
 const groups = [
@@ -16,11 +16,11 @@ const groups = [
     items: [
       {
         q: "Wat is INRYOU precies?",
-        a: "INRYOU is een premium functionele bruisdrank — licht bruisend bronwater met echt fruit, functionele mineralen zoals magnesium en kalium, en zo goed als geen suiker. Zie het als een rustiger, zuiverder alternatief voor frisdrank.",
+        a: "INRYOU is een premium functionele bruisdrank, licht bruisend bronwater met echt fruit, functionele mineralen zoals magnesium en kalium, en zo goed als geen suiker. Zie het als een rustiger, zuiverder alternatief voor frisdrank.",
       },
       {
         q: "Hoeveel suiker en hoeveel calorieën?",
-        a: "Minder dan 2 g suiker en ongeveer 12–18 kcal per blikje van 250 ml, afhankelijk van de smaak. De zoetheid komt van echt fruit en een vleugje steviablad — nooit van geraffineerde suiker of kunstmatige zoetstoffen.",
+        a: "Minder dan 2 g suiker en ongeveer 12–18 kcal per blikje van 250 ml, afhankelijk van de smaak. De zoetheid komt van echt fruit en een vleugje steviablad, nooit van geraffineerde suiker of kunstmatige zoetstoffen.",
       },
       {
         q: "Is het geschikt voor veganisten?",
@@ -28,7 +28,7 @@ const groups = [
       },
       {
         q: "Bevat het cafeïne?",
-        a: "Nee. INRYOU is bewust cafeïnevrij. De zachte boost komt van hydratatie, mineralen en natuurlijke frisheid — niet van stimulerende middelen.",
+        a: "Nee. INRYOU is bewust cafeïnevrij. De zachte boost komt van hydratatie, mineralen en natuurlijke frisheid, niet van stimulerende middelen.",
       },
     ],
   },
@@ -37,11 +37,11 @@ const groups = [
     items: [
       {
         q: "Hoe werkt Abonneer & bespaar?",
-        a: "Kies een abonnement bij eender welk product om 15% te besparen en gratis levering te krijgen bij elke bestelling, elke vier weken verstuurd. Je kan op elk moment pauzeren, overslaan, smaken wisselen of opzeggen via je account — geen verplichtingen, geen ongemakkelijke telefoontjes.",
+        a: "Kies een abonnement bij eender welk product om 15% te besparen en gratis levering te krijgen bij elke bestelling, elke vier weken verstuurd. Je kan op elk moment pauzeren, overslaan, smaken wisselen of opzeggen via je account, geen verplichtingen, geen ongemakkelijke telefoontjes.",
       },
       {
         q: "Kan ik mijn smaken bij elke levering aanpassen?",
-        a: "Absoluut. Je abonnement is volledig flexibel — wissel smaken of aantallen voor elke levering wanneer je maar wil.",
+        a: "Absoluut. Je abonnement is volledig flexibel, wissel smaken of aantallen voor elke levering wanneer je maar wil.",
       },
     ],
   },
@@ -58,7 +58,7 @@ const groups = [
       },
       {
         q: "Wat is jullie retourbeleid?",
-        a: "We bieden een 30 dagen tevredenheidsgarantie. Ben je niet tevreden, neem dan contact op en we lossen het op — terugbetaling of vervanging, jij kiest.",
+        a: "We bieden een 30 dagen tevredenheidsgarantie. Ben je niet tevreden, neem dan contact op en we lossen het op, terugbetaling of vervanging, jij kiest.",
       },
     ],
   },

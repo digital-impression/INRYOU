@@ -35,7 +35,7 @@ export const reviews: Review[] = [
     location: "Leuven",
     rating: 5,
     title: "Vast onderdeel van mijn avond",
-    body: "Rond een uur of negen, in plaats van een glas wijn. De kweepeer heb ik nog niet kunnen proberen — staat op mijn lijstje.",
+    body: "Rond een uur of negen, in plaats van een glas wijn. De kweepeer heb ik nog niet kunnen proberen, die staat op mijn lijstje.",
     flavor: "Cranberry",
   },
   {

@@ -33,8 +33,8 @@ export function Lifestyle() {
         </Reveal>
         <Reveal delay={2}>
           <p className="measure-center mt-5 text-pretty text-lg text-ink">
-            INRYOU is geen detox of ontbering. Het is een kleine, dagelijkse
-            upgrade — de rustige keuze die past in een vol, modern leven.
+            Geen detox, geen regime. Gewoon een blikje dat je oppakt op de
+            momenten dat je anders naar iets zoeters had gegrepen.
           </p>
         </Reveal>
       </div>
@@ -66,9 +66,9 @@ export function Lifestyle() {
               Van ochtendritueel tot de reset in de namiddag
             </h3>
             <p className="mt-4 text-pretty text-ink">
-              Rustige energie zonder crash, mineralen die stil op de achtergrond
-              werken, en de overtuiging dat welzijn de makkelijke keuze zou
-              moeten zijn — van ons recept tot onze blikjes.
+              Waarom we begonnen zijn, wat er precies in gaat, en waarom we
+              koppig blijven bij minder dan 2g suiker terwijl zoeter makkelijker
+              verkoopt.
             </p>
             <span className="mt-6 inline-flex items-center gap-2 font-medium text-orange-deep">
               Ontdek ons verhaal

@@ -1,167 +1,203 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight, Leaf, Drop, Heart, Sparkle } from "@/components/ui/icons";
+import { Splat } from "@/components/ui/Splash";
+import { Parallax } from "@/components/ui/Parallax";
+import { ArrowRight } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "Ons verhaal",
   description:
-    "INRYOU ontstond uit een simpel geloof: welzijn zou de makkelijke keuze moeten zijn. Maak kennis met het merk achter natuurlijke balans, moeiteloos.",
+    "Waarom INRYOU bestaat: één frustratie om vier uur 's middags, twee jaar proeven, en de koppige keuze om onder de 2g suiker te blijven terwijl zoeter makkelijker verkoopt.",
 };
 
-const values = [
+/** Written as claims we can be held to, not as values on a poster. */
+const stances = [
   {
-    icon: Heart,
-    title: "Balans boven extremen",
-    text: "Wij geloven niet in verzaken of strenge regels. Duurzaam welzijn draait om een beetje beter kiezen, een beetje vaker.",
+    n: "01",
+    title: "Zoeter verkoopt beter. Jammer dan.",
+    text: "Elke keer dat we een recept lieten proeven kwam dezelfde opmerking: doe er wat suiker bij. We hebben het één keer geprobeerd en het smaakte inderdaad meteen makkelijker. Het staat niet in het blik.",
   },
   {
-    icon: Leaf,
-    title: "Altijd eerlijk",
-    text: "Korte ingrediëntenlijsten, echte doseringen en etiketten die je echt kunt vertrouwen. Geen kleine lettertjes, geen marketingmineralen.",
+    n: "02",
+    title: "Als een ingrediënt niks doet, gaat het eruit",
+    text: "Geen vitaminelijstje om het etiket te vullen. Wat erin zit, zit erin op een hoeveelheid die telt, en we zetten er het getal bij.",
   },
   {
-    icon: Sparkle,
-    title: "Schoonheid als standaard",
-    text: "Iets waar je elke dag naar grijpt, moet een plezier zijn om vast te houden en te drinken. Design is hier geen luxe — het is de essentie.",
+    n: "03",
+    title: "Het moet iets zijn waar je zin in hebt",
+    text: "Gezond drinken dat aanvoelt als huiswerk houdt niemand vol. Als je er niet naar grijpt op een dinsdagmiddag om vier uur, hebben we ons werk niet goed gedaan.",
   },
   {
-    icon: Drop,
-    title: "Echt functioneel",
-    text: "Elk blikje verdient zijn plaats: echt fruit, functionele mineralen en een recept dat lekker genoeg is om dagelijks te drinken.",
+    n: "04",
+    title: "Belgisch, en dat blijft zo",
+    text: "Gebrouwen bij Mechelen, twintig minuten van waar de eerste tests in een keukenpan gingen. Het scheelt transport en het scheelt uitleg.",
   },
+];
+
+const numbers = [
+  { v: "2 jaar", l: "van proeven voor het eerste blik de deur uit ging" },
+  { v: "41", l: "recepten die het niet gehaald hebben" },
+  { v: "1,8g", l: "suiker per blik, en daar blijft het bij" },
 ];
 
 export default function OurStoryPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Opening */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-cream to-cream-deep" />
-          <div
-            className="absolute left-1/2 top-0 h-[460px] w-[460px] -translate-x-1/2 rounded-full opacity-50 blur-2xl"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(224,124,58,0.28), transparent 65%)",
-            }}
-          />
-        </div>
-        <div className="container-px mx-auto max-w-3xl py-20 text-center lg:py-28">
+        <Parallax
+          distance={60}
+          className="pointer-events-none absolute inset-0 text-cranberry"
+        >
+          <Splat seed={2} rotate={-14} className="-left-[10%] -top-[20%] h-[420px] w-[420px] opacity-[0.14]" />
+          <Splat seed={5} flip className="-right-[8%] top-[30%] h-80 w-80 opacity-[0.1]" />
+        </Parallax>
+
+        <div className="container-px relative mx-auto max-w-4xl py-16 text-center lg:py-24">
           <Reveal>
             <p className="eyebrow">Ons verhaal</p>
           </Reveal>
           <Reveal delay={1}>
-            <h1 className="mt-4 text-balance text-5xl leading-[1.02] sm:text-6xl">
-              Welzijn zou de{" "}
-              <span className="accent text-orange-deep">makkelijke keuze moeten zijn.</span>
+            <h1 className="mt-4 text-balance display-hero">
+              <span className="block uppercase">Het begon om</span>
+              <span className="accent block text-orange-deep">vier uur 's middags.</span>
             </h1>
           </Reveal>
           <Reveal delay={2}>
-            <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink">
-              INRYOU begon met een kleine, dagelijkse frustratie — en met het
-              geloof dat de betere optie ook de mooiste, meest natuurlijke keuze
-              zou moeten zijn om naar te grijpen.
+            <p className="measure-center mt-6 text-pretty text-lg text-ink">
+              Dat moment waarop je koffie niks meer doet, water te saai is en de
+              automaat één ding aanbiedt: iets met negen suikerklontjes erin.
+              Daar hebben we twee jaar aan besteed.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Narrative */}
-      <section className="container-px mx-auto max-w-7xl py-12 lg:py-16">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal as="div" className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
-            <Image
-              src={asset("/images/can-in-hand.jpg")}
-              alt="Een blikje INRYOU Cranberry tegen de lucht gehouden"
-              fill
-              sizes="(min-width:1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </Reveal>
-          <div className="max-w-lg">
-            <Reveal>
-              <h2 className="text-3xl sm:text-4xl">Het begon in de koelkast</h2>
-            </Reveal>
-            <Reveal delay={1}>
-              <div className="mt-6 space-y-4 text-pretty text-lg leading-relaxed text-ink">
-                <p>
-                  Elke drank die goed voor ons was, leek dat luidkeels te
-                  verkondigen. En elke drank die écht lekker smaakte, leek stiekem
-                  tegen ons te werken — te veel suiker, te veel additieven, met een
-                  suikerdip die verderop op de loer lag.
-                </p>
-                <p>
-                  Wij wilden iets ertussenin. Een drank met de pit en het ritueel
-                  van een geweldige frisdrank, maar met het zuivere geweten van een
-                  glas water. Kalm, mooi en echt goed voor je.
-                </p>
-                <p>
-                  Dus maakten we hem zelf — met geperst echt fruit, functionele
-                  mineralen in eerlijke doseringen en zacht gezoet met steviablad.
-                  Het resultaat is INRYOU: natuurlijke balans, moeiteloos.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={2}>
-              <div className="mt-8 border-l-2 border-orange pl-5">
-                <p className="font-display text-xl italic text-charcoal">
-                  "We zijn er niet om jou te repareren. Jij bent niet stuk. We
-                  maken de betere keuze gewoon iets makkelijker binnen handbereik."
-                </p>
-                <p className="mt-3 text-sm text-muted">
-                  Sofie Vermeer · Oprichter
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="bg-charcoal text-cream">
+      {/* The frustration, told straight */}
+      <section className="bg-blush">
         <div className="container-px mx-auto max-w-7xl py-20 lg:py-28">
-          <Reveal>
-            <p className="eyebrow text-orange">Waar we in geloven</p>
-            <h2 className="mt-4 max-w-2xl text-balance text-4xl leading-[1.05] text-cream sm:text-5xl">
-              Vier principes, in elk blikje.
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
-            {values.map((v, i) => (
-              <Reveal key={v.title} delay={i} as="div" className="flex gap-5">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-cream/10 text-orange">
-                  <v.icon className="h-6 w-6" />
-                </span>
-                <div>
-                  <h3 className="text-xl text-cream">{v.title}</h3>
-                  <p className="mt-2 text-pretty text-cream/70">{v.text}</p>
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
+            <div>
+              <Reveal>
+                <h2 className="text-balance display-2">
+                  We wilden het gewoon{" "}
+                  <span className="accent text-cranberry">kopen.</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={1}>
+                <div className="measure mt-6 space-y-4 text-pretty text-lg text-ink">
+                  <p>
+                    Eerst hebben we gezocht. Bruisend, weinig suiker, smaakt
+                    naar iets. Wat we vonden was ofwel water met een vleugje
+                    aroma, ofwel frisdrank met een gezondheidsclaim op de
+                    voorkant en 30 gram suiker op de achterkant.
+                  </p>
+                  <p>
+                    Tussen die twee zat niets. Dus zijn we in een keukenpan
+                    begonnen, met veenbessen van de markt en veel te veel
+                    gember. Dat eerste recept was ondrinkbaar.
+                  </p>
+                  <p className="font-medium text-charcoal">
+                    Nummer 42 niet.
+                  </p>
                 </div>
               </Reveal>
-            ))}
+            </div>
+
+            <Reveal delay={1} as="div">
+              <div className="relative overflow-hidden rounded-[2rem] ring-1 ring-charcoal/5">
+                <Image
+                  src={asset("/images/can-in-hand.jpg")}
+                  alt="Een INRYOU blik in de hand tegen een heldere lucht"
+                  width={480}
+                  height={568}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Numbers */}
+      <section className="container-px mx-auto max-w-7xl py-16 lg:py-20">
+        <Stagger className="grid gap-6 sm:grid-cols-3">
+          {numbers.map((n) => (
+            <Reveal key={n.v} as="div">
+              <div className="rounded-3xl bg-white/70 p-8 ring-1 ring-charcoal/5">
+                <p className="font-display text-5xl leading-none text-orange-deep">
+                  {n.v}
+                </p>
+                <p className="mt-3 text-pretty text-ink">{n.l}</p>
+              </div>
+            </Reveal>
+          ))}
+        </Stagger>
+      </section>
+
+      {/* Stances, on the brand's dark panel */}
+      <section className="container-px mx-auto max-w-7xl py-8 lg:py-12">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-charcoal px-6 py-16 text-cream sm:px-12 lg:px-16 lg:py-20">
+          <Parallax distance={70} className="pointer-events-none absolute inset-0 text-cream">
+            <Splat seed={6} rotate={-8} className="-right-16 -top-12 h-80 w-80 opacity-[0.08] lg:h-96 lg:w-96" />
+            <Splat seed={1} flip className="-bottom-16 left-4 h-64 w-64 opacity-[0.06]" />
+          </Parallax>
+
+          <div className="relative">
+            <Reveal>
+              <p className="eyebrow text-orange">Waar we niet van afwijken</p>
+            </Reveal>
+            <Reveal delay={1}>
+              <h2 className="mt-3 max-w-2xl text-balance text-cream display-2">
+                Vier dingen die we{" "}
+                <span className="accent text-orange">niet doen.</span>
+              </h2>
+            </Reveal>
+
+            <Stagger className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2">
+              {stances.map((s) => (
+                <Reveal key={s.n} as="div">
+                  <div className="border-t border-cream/15 pt-6">
+                    <p className="font-display text-3xl text-orange/70">{s.n}</p>
+                    <h3 className="mt-3 text-balance text-xl text-cream sm:text-2xl">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 text-pretty text-cream/70">{s.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </Stagger>
+          </div>
+        </div>
+      </section>
+
+      {/* Where it stands now */}
       <section className="container-px mx-auto max-w-3xl py-20 text-center lg:py-28">
         <Reveal>
-          <h2 className="text-balance text-4xl leading-[1.05] sm:text-5xl">
-            Vind jouw balans.
+          <h2 className="text-balance display-2">
+            En nu staat het in{" "}
+            <span className="accent text-orange-deep">140 winkels.</span>
           </h2>
         </Reveal>
         <Reveal delay={1}>
-          <p className="mx-auto mt-5 max-w-md text-pretty text-lg text-ink">
-            Drie smaken, één filosofie. Begin met wat jou het meest aanspreekt.
+          <p className="measure-center mt-5 text-pretty text-lg text-ink">
+            We zijn met vier. Er is geen marketingafdeling, wel een proefpanel
+            van vrienden dat eerlijker is dan ons lief is. De kweepeer &amp;
+            vanille ligt er al negen maanden op, omdat hij nog niet goed genoeg
+            was.
           </p>
         </Reveal>
         <Reveal delay={2}>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-9 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/shop" size="lg">
-              Ontdek het assortiment
+              Proef het zelf
               <ArrowRight className="h-5 w-5" />
+            </ButtonLink>
+            <ButtonLink href="/science" variant="outline" size="lg">
+              Wat er precies in zit
             </ButtonLink>
           </div>
         </Reveal>

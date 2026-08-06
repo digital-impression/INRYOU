@@ -116,8 +116,8 @@ export function Hero() {
             animate="visible"
             className="measure mt-6 text-pretty text-lg leading-relaxed text-ink"
           >
-            Echte vruchten, functionele mineralen, amper suiker. Alles wat je
-            lekker vindt aan frisdrank — zonder de crash.
+            Echte vruchten, functionele mineralen, amper suiker. Alles wat
+            je lekker vindt aan frisdrank, zonder de crash achteraf.
           </motion.p>
 
           <motion.div

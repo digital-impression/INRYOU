@@ -26,7 +26,7 @@ export function CartPage() {
         </span>
         <h1 className="mt-6 text-4xl">Bestelling bevestigd</h1>
         <p className="mt-3 text-pretty text-ink">
-          Bedankt — je balans is onderweg. Dit is een demo-checkout, dus er werd
+          Bedankt, je balans is onderweg. Dit is een demo-checkout, dus er werd
           geen betaling uitgevoerd en geen blikje geopend.
         </p>
         <Link

@@ -4,7 +4,7 @@ import { ProsePage } from "@/components/ui/ProsePage";
 export const metadata: Metadata = {
   title: "Duurzaamheid",
   description:
-    "Hoe INRYOU zijn voetafdruk licht houdt — recycleerbaar aluminium, CO₂-neutrale levering, verantwoorde herkomst en eerlijke vooruitgang.",
+    "Hoe INRYOU zijn voetafdruk licht houdt, recycleerbaar aluminium, CO₂-neutrale levering, verantwoorde herkomst en eerlijke vooruitgang.",
 };
 
 export default function SustainabilityPage() {
@@ -12,7 +12,7 @@ export default function SustainabilityPage() {
     <ProsePage
       eyebrow="Duurzaamheid"
       title="Licht voor de planeet, met opzet."
-      intro="Balans betekent verder denken dan wat er in het blikje zit. We proberen bij elke stap licht te wegen — en eerlijk te zijn over waar we nog beter kunnen."
+      intro="Balans betekent verder denken dan wat er in het blikje zit. We proberen bij elke stap licht te wegen, en eerlijk te zijn over waar we nog beter kunnen."
       sections={[
         {
           heading: "Eindeloos recycleerbaar aluminium",
@@ -29,7 +29,7 @@ export default function SustainabilityPage() {
         {
           heading: "Verantwoorde ingrediënten",
           paragraphs: [
-            "We halen echt fruit en natuurlijke ingrediënten bij leveranciers die onze standaarden delen, en werken zonder kunstmatige kleurstoffen, zoetstoffen of bewaarmiddelen — beter voor jou, en zachter voor de systemen die ons voedsel voortbrengen.",
+            "We halen echt fruit en natuurlijke ingrediënten bij leveranciers die onze standaarden delen, en werken zonder kunstmatige kleurstoffen, zoetstoffen of bewaarmiddelen, beter voor jou, en zachter voor de systemen die ons voedsel voortbrengen.",
           ],
         },
         {

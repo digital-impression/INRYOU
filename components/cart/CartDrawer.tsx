@@ -86,7 +86,7 @@ export function CartDrawer() {
                     Je mandje is rustig en leeg
                   </p>
                   <p className="mt-2 max-w-xs text-sm text-muted">
-                    Voeg wat balans toe aan je dag — ontdek het assortiment.
+                    Voeg wat balans toe aan je dag, ontdek het assortiment.
                   </p>
                   <Link
                     href="/shop"

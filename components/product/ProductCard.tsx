@@ -55,7 +55,7 @@ export function ProductCard({ product }: { product: Product }) {
           />
         </>
       ) : (
-        // Coming-soon — a blurred can silhouette lit by the orb glow
+        // Coming-soon, a blurred can silhouette lit by the orb glow
         <>
           <Image
             src={asset("/images/can-cranberry.png")}
@@ -70,7 +70,7 @@ export function ProductCard({ product }: { product: Product }) {
               Binnenkort
             </span>
           </div>
-          <span className="sr-only">INRYOU — binnenkort</span>
+          <span className="sr-only">INRYOU, binnenkort</span>
         </>
       )}
     </div>

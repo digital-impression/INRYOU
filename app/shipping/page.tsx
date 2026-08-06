@@ -33,7 +33,7 @@ export default function ShippingPage() {
         {
           heading: "30 dagen tevredenheidsgarantie",
           paragraphs: [
-            "Ben je niet tevreden met je INRYOU, laat het ons dan binnen 30 dagen weten en we lossen het op — een vervanging of een volledige terugbetaling, wat je maar verkiest. Je hoeft de blikjes niet terug te sturen.",
+            "Ben je niet tevreden met je INRYOU, laat het ons dan binnen 30 dagen weten en we lossen het op, een vervanging of een volledige terugbetaling, wat je maar verkiest. Je hoeft de blikjes niet terug te sturen.",
           ],
         },
         {

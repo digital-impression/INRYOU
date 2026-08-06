@@ -52,7 +52,7 @@ export function StoreLocator({ compact = false }: { compact?: boolean }) {
 
       <p className="mt-4 text-center text-sm text-muted">
         {results.length === 0
-          ? "Geen verkooppunten gevonden — probeer een andere stad of postcode."
+          ? "Geen verkooppunten gevonden, probeer een andere stad of postcode."
           : `${results.length} verkooppunt${results.length === 1 ? "" : "en"} gevonden`}
       </p>
 

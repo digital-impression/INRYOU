@@ -33,8 +33,8 @@ export function ClosingCTA() {
             </Reveal>
             <Reveal delay={2}>
               <p className="measure mt-5 text-pretty text-lg text-cream/70">
-                Begin met een Proefpakket en vind je smaak, of abonneer je en
-                bespaar 15% — pauzeer, sla over of annuleer wanneer je wil.
+                Begin met een Proefpakket en zoek je smaak uit. Abonneer je
+                en je bespaart 15%. Pauzeren, overslaan of stoppen kan altijd.
               </p>
             </Reveal>
             <Reveal delay={3}>

@@ -39,9 +39,8 @@ export function Comparison() {
             </Reveal>
             <Reveal delay={2}>
               <p className="measure mt-5 text-pretty text-lg text-cream/70">
-                Alles wat je lekker vindt aan frisdrank — de fizz, het ritueel,
-                de smaak — zonder de suiker en de crash. Zie het verschil in één
-                oogopslag.
+                De bubbels, het ritueel, de smaak. Alleen dan zonder de
+                suiker en zonder het dipje een uur later.
               </p>
             </Reveal>
             <Reveal delay={3}>
@@ -154,11 +153,11 @@ export function Comparison() {
                     >
                       De slimmere keuze
                     </th>
-                    <td className="border-l border-cream/10 bg-orange px-2.5 py-4 text-left text-[0.84rem] font-bold text-white sm:px-5 sm:text-[0.95rem]">
+                    <td className="border-l border-cream/10 bg-orange px-2.5 py-4 text-center text-[0.84rem] font-bold text-white sm:px-5 sm:text-[0.95rem]">
                       INRYOU
                     </td>
                     <td className="border-l border-cream/10 px-2.5 py-4 text-left text-sm text-cream/35 sm:px-5">
-                      <span aria-hidden>—</span>
+                      <span aria-hidden>·</span>
                       <span className="sr-only">Niet van toepassing</span>
                     </td>
                   </tr>

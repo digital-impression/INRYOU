@@ -9,7 +9,7 @@ import { themeBg, themeText } from "@/lib/themeStyles";
 export const metadata: Metadata = {
   title: "Journal",
   description:
-    "Ideeën over welzijn, gezonde alternatieven voor frisdrank, functionele ingrediënten en de kunst van dagelijkse balans — van het team achter INRYOU.",
+    "Ideeën over welzijn, gezonde alternatieven voor frisdrank, functionele ingrediënten en de kunst van dagelijkse balans, van het team achter INRYOU.",
 };
 
 export default function JournalPage() {

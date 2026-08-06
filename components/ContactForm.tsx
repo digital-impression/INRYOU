@@ -19,7 +19,7 @@ export function ContactForm() {
         </span>
         <h2 className="mt-5 text-2xl">Bericht verzonden</h2>
         <p className="mt-2 max-w-sm text-pretty text-ink">
-          Bedankt voor je bericht — we komen binnen één werkdag bij je terug.
+          Bedankt voor je bericht, we komen binnen één werkdag bij je terug.
         </p>
       </div>
     );

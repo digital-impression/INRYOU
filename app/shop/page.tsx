@@ -10,7 +10,7 @@ import { products } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Shop",
   description:
-    "Shop de INRYOU functionele bruisende dranken — Cranberry, Ginger & Citrus en Kweepeer & Vanille. Echte vruchten, functionele mineralen, minder dan 2g suiker. Gratis levering vanaf €35.",
+    "Shop de INRYOU functionele bruisende dranken. Cranberry, Ginger & Citrus en Kweepeer & Vanille. Echte vruchten, functionele mineralen, minder dan 2g suiker. Gratis levering vanaf €35.",
 };
 
 const perks = [

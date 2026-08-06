@@ -58,7 +58,7 @@ export function WhereToBuy() {
             <Reveal delay={2}>
               <p className="measure mt-3 text-pretty text-cream/70">
 Bij de buurtwinkel, de speciaalzaak en de horecazaak om de
-                hoek — door heel België. Niks bestellen, gewoon meenemen.
+                hoek, door heel België. Niks bestellen, gewoon meenemen.
               </p>
             </Reveal>
           </div>

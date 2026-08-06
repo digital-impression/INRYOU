@@ -117,8 +117,8 @@ export function Rooted() {
             </Reveal>
             <Reveal delay={2}>
               <p className="measure-center mt-5 text-pretty text-lg text-cream/70">
-                Zes beloftes die we in elk blik waarmaken — van wat erin gaat
-                tot wat ervan overblijft.
+                Zes beloftes die we in elk blik waarmaken, van wat erin gaat
+                tot wat er na het drinken van overblijft.
               </p>
             </Reveal>
           </div>
@@ -155,7 +155,7 @@ export function Rooted() {
 
           <Reveal delay={1}>
             <p className="mt-12 text-center text-sm text-cream/50">
-              Met intentie gemaakt — beter voor jou en de planeet.
+              Geen enkele daarvan is achteraf bedacht.
             </p>
           </Reveal>
         </div>

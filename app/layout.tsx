@@ -25,11 +25,11 @@ const siteUrl = "https://inryou.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "INRYOU — Natuurlijke balans, moeiteloos",
+    default: "INRYOU · Natuurlijke balans, moeiteloos",
     template: "%s · INRYOU",
   },
   description:
-    "INRYOU is een premium functionele bruisende drank — echte vruchten, functionele mineralen en amper suiker. Een rustiger, gezonder alternatief voor frisdrank. Natuurlijke balans, moeiteloos.",
+    "INRYOU is een bruisende drank met echte vruchten, functionele mineralen en minder dan 2g suiker. Alles wat je lekker vindt aan frisdrank, zonder het dipje achteraf.",
   keywords: [
     "functionele drank",
     "gezond alternatief voor frisdrank",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "INRYOU",
   ],
   openGraph: {
-    title: "INRYOU — Natuurlijke balans, moeiteloos",
+    title: "INRYOU · Natuurlijke balans, moeiteloos",
     description:
       "Een premium functionele bruisende drank. Echte vruchten, functionele mineralen, amper suiker.",
     url: siteUrl,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "INRYOU — Natuurlijke balans, moeiteloos",
+    title: "INRYOU · Natuurlijke balans, moeiteloos",
     description:
       "Een premium functionele bruisende drank. Echte vruchten, functionele mineralen, amper suiker.",
   },

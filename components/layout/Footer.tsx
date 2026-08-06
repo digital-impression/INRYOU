@@ -55,8 +55,8 @@ export function Footer() {
               Nog steeds aan het bruisen
             </p>
             <p className="mt-6 max-w-sm text-pretty text-cream/65">
-              Functionele bruisende dranken voor dagelijkse balans. Echte
-              vruchten, functionele mineralen, amper suiker — moeiteloos.
+              Bruisende dranken met echte vruchten en functionele mineralen.
+              Amper suiker, en toch iets waar je zin in hebt.
             </p>
             <div className="mt-8 max-w-sm">
               <p className="mb-3 text-sm font-medium text-cream">
@@ -110,7 +110,7 @@ export function Footer() {
               Ingrediënten & voeding
             </Link>
             <span className="text-cream/60">
-              Gebrouwen in België · blik leeg? Bij het metaal.
+              Gebrouwen in België. Blik leeg? Bij het metaal.
             </span>
           </div>
         </div>

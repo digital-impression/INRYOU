@@ -9,7 +9,7 @@ export const organizationSchema = {
   url: siteUrl,
   slogan: "Natuurlijke balans, moeiteloos.",
   description:
-    "INRYOU is een premium merk van functionele bruisende dranken — echte vruchten, functionele mineralen en amper suiker.",
+    "INRYOU is een premium merk van functionele bruisende dranken, echte vruchten, functionele mineralen en amper suiker.",
   brand: "INRYOU",
 };
 
