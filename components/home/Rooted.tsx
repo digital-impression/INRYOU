@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { Splat } from "@/components/ui/Splash";
-import { Bubbles } from "@/components/ui/Bubbles";
 import { IconBadge, type BadgeTone } from "@/components/ui/IconBadge";
 import { Heart, Check, Drop, Recycle, Globe, Sparkle } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
@@ -60,13 +59,12 @@ function Feature({ f, align }: { f: Feature; align: "left" | "right" }) {
   return (
     <Reveal as="div">
       <div
-        className={`flex items-center gap-4 ${
-          align === "left" ? "lg:flex-row-reverse lg:text-right" : ""
-        }`}
+        // Both columns read icon then text. Mirroring the left one put its
+        // text on the right edge, which is harder to read and left the two
+        // columns scanning in opposite directions.
+        className="flex items-center gap-4"
       >
-        {/* Always first: the left column is reversed, so a leading element
-            lands on the inner side in both columns. */}
-        <Connector align={align} />
+        {align === "right" && <Connector align={align} />}
         <IconBadge tone={f.tone} surface="dark" className="h-12 w-12">
           <f.icon className="h-6 w-6" strokeWidth={1.6} />
         </IconBadge>
@@ -76,6 +74,7 @@ function Feature({ f, align }: { f: Feature; align: "left" | "right" }) {
           </p>
           <p className="text-sm text-cream/60">{f.text}</p>
         </div>
+        {align === "left" && <Connector align={align} />}
       </div>
     </Reveal>
   );
@@ -104,8 +103,6 @@ export function Rooted() {
           <Splat seed={3} rotate={-10} className="-left-16 -top-10 h-72 w-72 opacity-[0.07] lg:h-96 lg:w-96" />
           <Splat seed={7} flip className="-bottom-12 right-[3%] h-64 w-64 opacity-[0.06] lg:h-80 lg:w-80" />
         </Parallax>
-
-        <Bubbles color={"#fbf7ef"} count={12} scale={0.85} />
 
         <div className="relative">
           <div className="text-center">

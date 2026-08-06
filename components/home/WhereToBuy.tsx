@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { Splat } from "@/components/ui/Splash";
-import { Bubbles } from "@/components/ui/Bubbles";
 import { ArrowRight, Pin } from "@/components/ui/icons";
 import { retailerCount, cityCount } from "@/lib/retailers";
 
@@ -40,8 +39,6 @@ export function WhereToBuy() {
             "radial-gradient(ellipse 70% 90% at 78% 30%, rgba(224,124,58,0.18), transparent 70%)",
         }}
       />
-
-      <Bubbles color={"#fbf7ef"} count={10} scale={0.8} />
 
       <div className="container-px relative mx-auto max-w-7xl py-16 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">

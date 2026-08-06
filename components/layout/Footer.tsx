@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { Splat } from "@/components/ui/Splash";
-import { Bubbles } from "@/components/ui/Bubbles";
 
 const columns = [
   {
@@ -42,7 +41,6 @@ export function Footer() {
         <Splat seed={4} rotate={-12} className="-right-20 -top-16 h-72 w-72 opacity-[0.07] lg:h-96 lg:w-96" />
         <Splat seed={2} flip className="-bottom-16 left-[8%] h-56 w-56 opacity-[0.05] lg:h-72 lg:w-72" />
       </span>
-      <Bubbles color={"#fbf7ef"} count={16} />
       <div className="container-px relative mx-auto max-w-7xl py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">

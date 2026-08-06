@@ -127,7 +127,7 @@ export function Comparison() {
                         {row.label}
                       </th>
                       <td className="border-l border-cream/10 px-2.5 py-4 sm:px-5">
-                        <span className="flex items-center justify-end gap-2 text-right">
+                        <span className="flex items-center gap-2">
                           <Check className="h-4 w-4 shrink-0 text-sage" />
                           <span className="hyphens-auto break-words text-[0.84rem] font-medium text-cream sm:text-[0.95rem]">
                             {row.inryou}
@@ -135,7 +135,7 @@ export function Comparison() {
                         </span>
                       </td>
                       <td className="border-l border-cream/10 px-2.5 py-4 sm:px-5">
-                        <span className="flex items-center justify-end gap-2 text-right text-cream/60">
+                        <span className="flex items-center gap-2 text-cream/60">
                           <Close className="h-4 w-4 shrink-0 text-cranberry" />
                           <span className="hyphens-auto break-words text-[0.84rem] sm:text-[0.95rem]">
                             {row.soda}
@@ -154,10 +154,10 @@ export function Comparison() {
                     >
                       De slimmere keuze
                     </th>
-                    <td className="border-l border-cream/10 bg-orange px-2.5 py-4 text-right text-[0.84rem] font-bold text-white sm:px-5 sm:text-[0.95rem]">
+                    <td className="border-l border-cream/10 bg-orange px-2.5 py-4 text-left text-[0.84rem] font-bold text-white sm:px-5 sm:text-[0.95rem]">
                       INRYOU
                     </td>
-                    <td className="border-l border-cream/10 px-2.5 py-4 text-right text-sm text-cream/35 sm:px-5">
+                    <td className="border-l border-cream/10 px-2.5 py-4 text-left text-sm text-cream/35 sm:px-5">
                       <span aria-hidden>—</span>
                       <span className="sr-only">Niet van toepassing</span>
                     </td>
