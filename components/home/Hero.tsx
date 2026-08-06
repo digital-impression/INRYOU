@@ -47,14 +47,18 @@ const flavors = [
 
 // Fixed so server and client render the same markup.
 const bubbles = [
-  { l: 30, s: 11, o: 0.5, d: 11, delay: 0, x: 14 },
-  { l: 38, s: 6, o: 0.4, d: 9, delay: 2.4, x: -10 },
-  { l: 45, s: 15, o: 0.42, d: 13, delay: 1.1, x: 18 },
-  { l: 53, s: 8, o: 0.55, d: 8.5, delay: 3.6, x: -8 },
-  { l: 60, s: 11, o: 0.4, d: 12, delay: 0.7, x: 16 },
-  { l: 67, s: 6, o: 0.55, d: 10, delay: 4.8, x: -14 },
-  { l: 72, s: 14, o: 0.34, d: 14, delay: 2, x: 10 },
-  { l: 35, s: 8, o: 0.46, d: 9.5, delay: 5.6, x: -16 },
+  { l: 22, s: 13, o: 0.5, d: 13, delay: 0, x: 16 },
+  { l: 30, s: 7, o: 0.42, d: 10, delay: 2.4, x: -10 },
+  { l: 37, s: 18, o: 0.34, d: 15, delay: 1.1, x: 20 },
+  { l: 44, s: 9, o: 0.55, d: 9.5, delay: 3.6, x: -8 },
+  { l: 51, s: 12, o: 0.4, d: 13, delay: 0.7, x: 16 },
+  { l: 58, s: 6, o: 0.6, d: 11, delay: 4.8, x: -14 },
+  { l: 65, s: 16, o: 0.3, d: 16, delay: 2, x: 12 },
+  { l: 72, s: 9, o: 0.48, d: 10.5, delay: 5.6, x: -16 },
+  { l: 79, s: 11, o: 0.36, d: 14, delay: 3.1, x: 10 },
+  { l: 27, s: 5, o: 0.6, d: 9, delay: 6.4, x: 8 },
+  { l: 61, s: 8, o: 0.45, d: 12.5, delay: 7.8, x: -12 },
+  { l: 47, s: 5, o: 0.62, d: 8.5, delay: 9.2, x: 6 },
 ];
 
 export function Hero() {
@@ -190,24 +194,35 @@ export function Hero() {
                 className="absolute inset-0"
                 style={{ color: flavor.paint }}
               >
-                <Splat seed={0} rotate={-8} className="-left-[6%] top-[12%] h-52 w-52 opacity-30 lg:h-72 lg:w-72" />
-                <Splat seed={4} rotate={18} flip className="-right-[4%] top-[4%] h-40 w-40 opacity-25 lg:h-52 lg:w-52" />
-                <Splat seed={6} className="bottom-[10%] right-[2%] h-32 w-32 opacity-22 lg:h-40 lg:w-40" />
+                {/* Wrapped, not classed directly: a CSS animation's transform
+                    beats the inline one, which would drop the rotate and flip. */}
+                <span className="animate-drift absolute inset-0">
+                  <Splat seed={0} rotate={-8} className="-left-[6%] top-[10%] h-56 w-56 opacity-30 lg:h-80 lg:w-80" />
+                </span>
+                <span className="animate-drift-alt absolute inset-0">
+                  <Splat seed={4} rotate={18} flip className="-right-[6%] top-[2%] h-44 w-44 opacity-25 lg:h-56 lg:w-56" />
+                </span>
+                <Splat seed={6} className="bottom-[8%] right-[0%] h-36 w-36 opacity-[0.22] lg:h-44 lg:w-44" />
+                <Splat seed={1} rotate={-24} className="bottom-[26%] -left-[2%] h-28 w-28 opacity-[0.16] lg:h-36 lg:w-36" />
+                <Splat seed={5} flip rotate={12} className="right-[26%] top-[38%] h-24 w-24 opacity-[0.13] lg:h-32 lg:w-32" />
                 
               </Parallax>
             </motion.div>
           </AnimatePresence>
 
-          {/* Carbonation, only where the paint is */}
+          {/* Carbonation. Tinted, not white: on a cream ground white bubbles
+              are simply invisible, which is why they read as missing. */}
           <div aria-hidden className="absolute inset-0 overflow-hidden">
             {bubbles.map((b, n) => (
               <span
                 key={n}
-                className="animate-bubble absolute bottom-[10%] rounded-full bg-white"
+                className="animate-bubble absolute bottom-[6%] rounded-full border"
                 style={{
                   left: `${b.l}%`,
                   height: b.s,
                   width: b.s,
+                  borderColor: flavor.paint,
+                  backgroundColor: `${flavor.paint}22`,
                   ["--b-o" as string]: b.o,
                   ["--b-d" as string]: `${b.d}s`,
                   ["--b-delay" as string]: `${b.delay}s`,

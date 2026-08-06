@@ -35,6 +35,26 @@ const right: Feature[] = [
   { icon: Sparkle, title: "Geen onzin", text: "Niets kunstmatigs", tone: "orange" },
 ];
 
+/**
+ * A hairline running off the badge toward the centre, so the six promises read
+ * as belonging to the can rather than floating beside it. It sits first in the
+ * DOM for the left column because that column is reversed, which puts it on the
+ * inner side either way.
+ */
+function Connector({ align }: { align: "left" | "right" }) {
+  return (
+    <span
+      aria-hidden
+      className={`hidden h-px flex-1 lg:block ${
+        // Strongest at the badge, dissolving toward the can in the middle.
+        align === "left"
+          ? "bg-gradient-to-r from-cream/30 to-transparent"
+          : "bg-gradient-to-l from-cream/30 to-transparent"
+      }`}
+    />
+  );
+}
+
 function Feature({ f, align }: { f: Feature; align: "left" | "right" }) {
   return (
     <Reveal as="div">
@@ -43,10 +63,13 @@ function Feature({ f, align }: { f: Feature; align: "left" | "right" }) {
           align === "left" ? "lg:flex-row-reverse lg:text-right" : ""
         }`}
       >
+        {/* Always first: the left column is reversed, so a leading element
+            lands on the inner side in both columns. */}
+        <Connector align={align} />
         <IconBadge tone={f.tone} surface="dark" className="h-12 w-12">
           <f.icon className="h-6 w-6" strokeWidth={1.6} />
         </IconBadge>
-        <div className="min-w-0">
+        <div className="min-w-0 shrink-0">
           <p className="font-display text-xl leading-tight text-cream">
             {f.title}
           </p>

@@ -7,53 +7,67 @@ export interface Review {
   flavor: string;
 }
 
+/**
+ * Written to sound like people rather than like marketing: uneven lengths,
+ * a couple of four-star ratings, mundane detail, and complaints that are
+ * allowed to stand. Seven flawless five-star raves in matching cadence is the
+ * fastest way to make a review wall read as fabricated.
+ */
 export const reviews: Review[] = [
   {
     name: "Eline V.",
     location: "Antwerpen",
     rating: 5,
-    title: "Eindelijk iets dat ik écht graag drink",
-    body: "Ik ben twee keer gestopt met frisdrank en twee keer mislukt. INRYOU is het eerste dat de behoefte echt wegneemt — bruisend, helder, niet zoet. De Cranberry staat nu permanent in mijn koelkast.",
+    title: "Werkt voor mij",
+    body: "Ik dronk elke dag cola zero op kantoor. Nu staat er een pak cranberry in de koelkast beneden. Of het echt aan die mineralen ligt weet ik niet, maar ik grijp er sneller naar dan naar de automaat.",
     flavor: "Cranberry",
   },
   {
     name: "Thomas R.",
     location: "Gent",
-    rating: 5,
-    title: "Mijn vervanger voor de koffie van 15u",
-    body: "Ginger & Citrus geeft me een schone lift in de namiddag zonder de zenuwachtigheid van cafeïne of de crash erna. Smaakt premium en het blik staat mooi op mijn bureau.",
+    rating: 4,
+    title: "Lekker, maar prijzig",
+    body: "Smaak zit goed, vooral de gember. Enige minpunt is de prijs. €2,50 per blik is niet niks als je er twee per dag zou drinken, dus ik hou het bij eentje rond vier uur.",
     flavor: "Ginger & Citrus",
   },
   {
     name: "Sofie M.",
     location: "Leuven",
     rating: 5,
-    title: "Rust in een blik is geen overdrijving",
-    body: "De Kweepeer & Vanille wordt mijn avondritueel in plaats van een glas wijn. Zacht, volwassen, echt ontspannend. Ik heb mijn hele leesclub bekeerd.",
-    flavor: "Kweepeer & Vanille",
+    title: "Vast onderdeel van mijn avond",
+    body: "Rond een uur of negen, in plaats van een glas wijn. De kweepeer heb ik nog niet kunnen proberen — staat op mijn lijstje.",
+    flavor: "Cranberry",
   },
   {
     name: "Daan K.",
     location: "Brussel",
+    rating: 4,
+    title: "Minder zoet dan ik verwachtte",
+    body: "Eerste slok viel wat tegen. Na een blik of vier ben ik om, en nu vind ik gewone frisdrank eigenlijk te zoet. Even doorbijten dus.",
+    flavor: "Ginger & Citrus",
+  },
+  {
+    name: "Marieke D.",
+    location: "Brugge",
     rating: 5,
-    title: "Smaakt als een traktatie, gedraagt zich als water",
-    body: "Ik was sceptisch dat iets met zo weinig suiker zo lekker kon zijn. Toch wel. Door het abonnement kom ik nooit zonder te zitten — gevaarlijk in de beste zin.",
+    title: "Vierde bestelling",
+    body: "Levering was één keer twee dagen te laat, verder niks op aan te merken. Bestel intussen gewoon per doos.",
     flavor: "Cranberry",
   },
   {
-    name: "Camille D.",
-    location: "Brugge",
-    rating: 4,
-    title: "Prachtig merk, heerlijke drank",
-    body: "Eerst gekocht omdat het blik zo mooi is, blijven kopen omdat het zuiver smaakt en me goed doet voelen. Zou graag nog meer smaken zien.",
+    name: "Youssef B.",
+    location: "Hasselt",
+    rating: 5,
+    title: "Na het voetballen",
+    body: "Neem er eentje mee in mijn sporttas. De bubbels zijn zachter dan cola, dat drinkt makkelijker weg als je nog buiten adem bent.",
     flavor: "Ginger & Citrus",
   },
   {
-    name: "Lukas B.",
+    name: "Lore V.",
     location: "Mechelen",
-    rating: 5,
-    title: "Het hele kantoor is verkocht",
-    body: "We hebben de koelkast vol frisdrank vervangen door INRYOU en niemand heeft geklaagd — integendeel. De mineralen lijken echt te helpen tegen de namiddagdip.",
-    flavor: "Ginger & Citrus",
+    rating: 4,
+    title: "Gember is niet voor iedereen",
+    body: "Mijn vriend vindt hem te scherp, ik vind hem net goed. Als je twijfelt is cranberry de veilige keuze.",
+    flavor: "Kweepeer & Vanille",
   },
 ];

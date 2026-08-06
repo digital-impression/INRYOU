@@ -247,6 +247,33 @@
   animation: bubble-rise var(--b-d, 9s) linear var(--b-delay, 0s) infinite;
 }
 
+/* Very slow drift for the paint behind the can, so the hero is never quite
+   still without anything actually moving fast enough to notice. */
+@keyframes splash-drift {
+  0%,
+  100% {
+    transform: rotate(-2.5deg) scale(1);
+  }
+  50% {
+    transform: rotate(2.5deg) scale(1.05);
+  }
+}
+.animate-drift {
+  animation: splash-drift 22s ease-in-out infinite;
+}
+@keyframes splash-drift-alt {
+  0%,
+  100% {
+    transform: rotate(3deg) scale(1.04);
+  }
+  50% {
+    transform: rotate(-2deg) scale(0.98);
+  }
+}
+.animate-drift-alt {
+  animation: splash-drift-alt 28s ease-in-out infinite;
+}
+
 /* Signature orb — very slow ambient rotation & breathing for decorative use */
 @keyframes orb-spin {
   to {
@@ -276,6 +303,8 @@
   .animate-float-slower,
   .animate-marquee-slow,
   .animate-bubble,
+  .animate-drift,
+  .animate-drift-alt,
   .animate-orb-spin,
   .animate-orb-breathe {
     animation: none;

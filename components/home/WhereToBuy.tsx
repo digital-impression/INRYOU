@@ -51,14 +51,14 @@ export function WhereToBuy() {
             </Reveal>
             <Reveal delay={1}>
               <h2 className="mt-4 text-balance text-cream display-3">
-                Ook gewoon{" "}
-                <span className="accent text-orange">om de hoek.</span>
+                Liever meteen{" "}
+                <span className="accent text-orange">meenemen?</span>
               </h2>
             </Reveal>
             <Reveal delay={2}>
               <p className="measure mt-3 text-pretty text-cream/70">
-                Vind INRYOU in de winkel of horecazaak bij jou in de buurt — of
-                laat het gewoon thuisbezorgen.
+                Geen bestelling, geen wachten. INRYOU staat in het rek bij
+                buurtwinkels, speciaalzaken en horeca door heel België.
               </p>
             </Reveal>
           </div>
