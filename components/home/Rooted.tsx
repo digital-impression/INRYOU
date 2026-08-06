@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { Splat } from "@/components/ui/Splash";
+import { Bubbles } from "@/components/ui/Bubbles";
 import { IconBadge, type BadgeTone } from "@/components/ui/IconBadge";
 import { Heart, Check, Drop, Recycle, Globe, Sparkle } from "@/components/ui/icons";
 import { asset } from "@/lib/asset";
@@ -103,6 +104,8 @@ export function Rooted() {
           <Splat seed={3} rotate={-10} className="-left-16 -top-10 h-72 w-72 opacity-[0.07] lg:h-96 lg:w-96" />
           <Splat seed={7} flip className="-bottom-12 right-[3%] h-64 w-64 opacity-[0.06] lg:h-80 lg:w-80" />
         </Parallax>
+
+        <Bubbles color={"#fbf7ef"} count={12} scale={0.85} />
 
         <div className="relative">
           <div className="text-center">

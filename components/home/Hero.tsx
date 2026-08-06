@@ -8,6 +8,7 @@ import { Stars } from "@/components/ui/Stars";
 import { ArrowRight } from "@/components/ui/icons";
 import { Parallax } from "@/components/ui/Parallax";
 import { Splat } from "@/components/ui/Splash";
+import { Bubbles } from "@/components/ui/Bubbles";
 import { asset } from "@/lib/asset";
 
 const fade = {
@@ -43,22 +44,6 @@ const flavors = [
     paint: "#e07c3a",
     paintDeep: "#b85a20",
   },
-];
-
-// Fixed so server and client render the same markup.
-const bubbles = [
-  { l: 22, s: 13, o: 0.5, d: 13, delay: 0, x: 16 },
-  { l: 30, s: 7, o: 0.42, d: 10, delay: 2.4, x: -10 },
-  { l: 37, s: 18, o: 0.34, d: 15, delay: 1.1, x: 20 },
-  { l: 44, s: 9, o: 0.55, d: 9.5, delay: 3.6, x: -8 },
-  { l: 51, s: 12, o: 0.4, d: 13, delay: 0.7, x: 16 },
-  { l: 58, s: 6, o: 0.6, d: 11, delay: 4.8, x: -14 },
-  { l: 65, s: 16, o: 0.3, d: 16, delay: 2, x: 12 },
-  { l: 72, s: 9, o: 0.48, d: 10.5, delay: 5.6, x: -16 },
-  { l: 79, s: 11, o: 0.36, d: 14, delay: 3.1, x: 10 },
-  { l: 27, s: 5, o: 0.6, d: 9, delay: 6.4, x: 8 },
-  { l: 61, s: 8, o: 0.45, d: 12.5, delay: 7.8, x: -12 },
-  { l: 47, s: 5, o: 0.62, d: 8.5, delay: 9.2, x: 6 },
 ];
 
 export function Hero() {
@@ -210,27 +195,8 @@ export function Hero() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Carbonation. Tinted, not white: on a cream ground white bubbles
-              are simply invisible, which is why they read as missing. */}
-          <div aria-hidden className="absolute inset-0 overflow-hidden">
-            {bubbles.map((b, n) => (
-              <span
-                key={n}
-                className="animate-bubble absolute bottom-[6%] rounded-full border"
-                style={{
-                  left: `${b.l}%`,
-                  height: b.s,
-                  width: b.s,
-                  borderColor: flavor.paint,
-                  backgroundColor: `${flavor.paint}22`,
-                  ["--b-o" as string]: b.o,
-                  ["--b-d" as string]: `${b.d}s`,
-                  ["--b-delay" as string]: `${b.delay}s`,
-                  ["--b-x" as string]: `${b.x}px`,
-                }}
-              />
-            ))}
-          </div>
+          <Bubbles color={flavor.paint} count={18} />
+
 
           {flavor.splash && (
             <Image

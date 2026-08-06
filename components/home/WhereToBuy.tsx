@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { Splat } from "@/components/ui/Splash";
+import { Bubbles } from "@/components/ui/Bubbles";
 import { ArrowRight, Pin } from "@/components/ui/icons";
 import { retailerCount, cityCount } from "@/lib/retailers";
 
@@ -40,6 +41,8 @@ export function WhereToBuy() {
         }}
       />
 
+      <Bubbles color={"#fbf7ef"} count={10} scale={0.8} />
+
       <div className="container-px relative mx-auto max-w-7xl py-16 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
@@ -51,14 +54,14 @@ export function WhereToBuy() {
             </Reveal>
             <Reveal delay={1}>
               <h2 className="mt-4 text-balance text-cream display-3">
-                Liever meteen{" "}
-                <span className="accent text-orange">meenemen?</span>
+                Ook gewoon{" "}
+                <span className="accent text-orange">in het rek.</span>
               </h2>
             </Reveal>
             <Reveal delay={2}>
               <p className="measure mt-3 text-pretty text-cream/70">
-                Geen bestelling, geen wachten. INRYOU staat in het rek bij
-                buurtwinkels, speciaalzaken en horeca door heel België.
+Bij de buurtwinkel, de speciaalzaak en de horecazaak om de
+                hoek — door heel België. Niks bestellen, gewoon meenemen.
               </p>
             </Reveal>
           </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
-import { Orb } from "@/components/ui/Orb";
+import { Splat } from "@/components/ui/Splash";
+import { Bubbles } from "@/components/ui/Bubbles";
 
 const columns = [
   {
@@ -37,12 +38,11 @@ const columns = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-charcoal text-cream/80">
-      <Orb
-        tone="cream"
-        spin
-        opacity={0.05}
-        className="-bottom-40 -right-24 h-[460px] w-[460px]"
-      />
+      <span className="pointer-events-none absolute inset-0 text-cream">
+        <Splat seed={4} rotate={-12} className="-right-20 -top-16 h-72 w-72 opacity-[0.07] lg:h-96 lg:w-96" />
+        <Splat seed={2} flip className="-bottom-16 left-[8%] h-56 w-56 opacity-[0.05] lg:h-72 lg:w-72" />
+      </span>
+      <Bubbles color={"#fbf7ef"} count={16} />
       <div className="container-px relative mx-auto max-w-7xl py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -51,6 +51,10 @@ export function Footer() {
             </p>
             <p className="mt-1 text-xs font-medium uppercase tracking-[0.32em] text-cream/50">
               natural balance
+            </p>
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream/[0.07] px-3 py-1 text-[0.7rem] text-cream/70 ring-1 ring-cream/15">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sage" />
+              Nog steeds aan het bruisen
             </p>
             <p className="mt-6 max-w-sm text-pretty text-cream/65">
               Functionele bruisende dranken voor dagelijkse balans. Echte
@@ -91,18 +95,25 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-cream/10 pt-8 text-xs text-cream/50 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} INRYOU. Alle rechten voorbehouden.</p>
+          <p>
+            © {new Date().getFullYear()} INRYOU. Alle rechten voorbehouden.
+          </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/privacy" className="hover:text-cream">
+            <Link href="/privacy" className="group inline-flex items-center gap-1.5 transition-colors hover:text-cream">
+              <span className="h-1 w-1 scale-0 rounded-full bg-orange transition-transform duration-300 group-hover:scale-100" />
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-cream">
+            <Link href="/terms" className="group inline-flex items-center gap-1.5 transition-colors hover:text-cream">
+              <span className="h-1 w-1 scale-0 rounded-full bg-orange transition-transform duration-300 group-hover:scale-100" />
               Voorwaarden
             </Link>
-            <Link href="/faq" className="hover:text-cream">
+            <Link href="/faq" className="group inline-flex items-center gap-1.5 transition-colors hover:text-cream">
+              <span className="h-1 w-1 scale-0 rounded-full bg-orange transition-transform duration-300 group-hover:scale-100" />
               Ingrediënten & voeding
             </Link>
-            <span>Met balans gemaakt in België</span>
+            <span className="text-cream/60">
+              Gebrouwen in België · blik leeg? Bij het metaal.
+            </span>
           </div>
         </div>
       </div>

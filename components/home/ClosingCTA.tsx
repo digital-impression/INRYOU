@@ -5,6 +5,7 @@ import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { ArrowRight, Truck, Recycle, Heart } from "@/components/ui/icons";
 import { Parallax } from "@/components/ui/Parallax";
 import { Splat } from "@/components/ui/Splash";
+import { Bubbles } from "@/components/ui/Bubbles";
 import { asset } from "@/lib/asset";
 
 const perks = [
@@ -21,6 +22,8 @@ export function ClosingCTA() {
           <Splat seed={3} rotate={-10} className="-left-16 -top-10 h-72 w-72 opacity-[0.07] lg:h-96 lg:w-96" />
           <Splat seed={7} flip className="-bottom-12 right-[3%] h-64 w-64 opacity-[0.06] lg:h-80 lg:w-80" />
         </Parallax>
+        <Bubbles color={"#fbf7ef"} count={14} scale={0.9} />
+
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <Reveal>

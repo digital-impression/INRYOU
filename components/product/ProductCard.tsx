@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
 import { Plus } from "@/components/ui/icons";
 import { Splat } from "@/components/ui/Splash";
+import { Bubbles } from "@/components/ui/Bubbles";
 import { pricePerCan, type Product } from "@/lib/products";
 import { asset } from "@/lib/asset";
 
@@ -28,6 +29,8 @@ export function ProductCard({ product }: { product: Product }) {
         <Splat seed={seed + 3} flip rotate={14} className="bottom-[2%] right-[-6%] h-[58%] w-[58%] opacity-22" />
         
       </span>
+
+      <Bubbles color={product.accent} count={7} scale={0.7} />
 
       {/* Badge */}
       <span className="absolute left-4 top-4 z-10 rounded-full bg-charcoal/85 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream">

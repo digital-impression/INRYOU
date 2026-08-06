@@ -101,13 +101,13 @@ export function Comparison() {
                     </th>
                     <th
                       scope="col"
-                      className="border-l border-t-2 border-l-cream/10 border-t-orange px-2.5 py-4 text-left text-[0.7rem] text-cream sm:px-5 sm:text-sm"
+                      className="border-l border-t-2 border-l-cream/10 border-t-orange px-2.5 py-4 text-center text-[0.7rem] text-cream sm:px-5 sm:text-sm"
                     >
                       INRYOU
                     </th>
                     <th
                       scope="col"
-                      className="border-l border-cream/10 px-2.5 py-4 text-left text-[0.7rem] text-cream/55 sm:px-5 sm:text-sm"
+                      className="border-l border-cream/10 px-2.5 py-4 text-center text-[0.7rem] text-cream/55 sm:px-5 sm:text-sm"
                     >
                       Frisdrank
                     </th>
@@ -122,12 +122,12 @@ export function Comparison() {
                     >
                       <th
                         scope="row"
-                        className="px-3.5 py-4 text-left text-[0.84rem] font-normal text-cream/85 sm:px-7 sm:text-[0.95rem]"
+                        className="px-3.5 py-4 text-left text-[0.84rem] font-semibold text-cream sm:px-7 sm:text-[0.95rem]"
                       >
                         {row.label}
                       </th>
                       <td className="border-l border-cream/10 px-2.5 py-4 sm:px-5">
-                        <span className="flex items-center gap-2">
+                        <span className="flex items-center justify-end gap-2 text-right">
                           <Check className="h-4 w-4 shrink-0 text-sage" />
                           <span className="hyphens-auto break-words text-[0.84rem] font-medium text-cream sm:text-[0.95rem]">
                             {row.inryou}
@@ -135,7 +135,7 @@ export function Comparison() {
                         </span>
                       </td>
                       <td className="border-l border-cream/10 px-2.5 py-4 sm:px-5">
-                        <span className="flex items-center gap-2 text-cream/60">
+                        <span className="flex items-center justify-end gap-2 text-right text-cream/60">
                           <Close className="h-4 w-4 shrink-0 text-cranberry" />
                           <span className="hyphens-auto break-words text-[0.84rem] sm:text-[0.95rem]">
                             {row.soda}
@@ -150,14 +150,14 @@ export function Comparison() {
                   <tr className="border-t border-cream/15">
                     <th
                       scope="row"
-                      className="px-3.5 py-4 text-left text-[0.84rem] font-medium text-cream sm:px-7 sm:text-[0.95rem]"
+                      className="px-3.5 py-4 text-left text-[0.84rem] font-semibold text-cream sm:px-7 sm:text-[0.95rem]"
                     >
                       De slimmere keuze
                     </th>
-                    <td className="border-l border-cream/10 bg-orange px-2.5 py-4 text-left text-[0.84rem] font-bold text-white sm:px-5 sm:text-[0.95rem]">
+                    <td className="border-l border-cream/10 bg-orange px-2.5 py-4 text-right text-[0.84rem] font-bold text-white sm:px-5 sm:text-[0.95rem]">
                       INRYOU
                     </td>
-                    <td className="border-l border-cream/10 px-2.5 py-4 text-left text-sm text-cream/35 sm:px-5">
+                    <td className="border-l border-cream/10 px-2.5 py-4 text-right text-sm text-cream/35 sm:px-5">
                       <span aria-hidden>—</span>
                       <span className="sr-only">Niet van toepassing</span>
                     </td>
