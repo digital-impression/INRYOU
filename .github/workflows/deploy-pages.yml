@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - claude/quirky-darwin-9mx863
+      - claude/inryou-live-preview-sfhrsa
   workflow_dispatch:
 
 permissions:
